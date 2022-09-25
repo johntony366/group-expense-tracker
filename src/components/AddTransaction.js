@@ -10,12 +10,13 @@ export const AddTransactionForm = () => {
   const { handleSubmit, reset, setValue, control } = useForm({ defaultValues });
 
   return (
-    
-    <Box className="addTransaction" width="100%">
-      <Typography variant="h5" sx={{marginBottom: "16px"}}>Add new transaction</Typography>
+    <Box className="addTransaction" width="clamp(250px, 50%, 500px)">
+      <Typography variant="h5" sx={{ marginBottom: "16px" }}>
+        Add new transaction
+      </Typography>
       <form
         onSubmit={handleSubmit((data) => console.log(data))}
-        style={{ width: "100%"}}
+        style={{ width: "100%" }}
       >
         <Box
           sx={{
