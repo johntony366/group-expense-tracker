@@ -11,6 +11,7 @@ export const HistoryItem = ({ text, amount }) => {
           boxShadow: "1px 4px 5px 0px #EDEDED",
           my: "4px",
           borderRight: amount > 0 ? "4px solid green" : "4px solid red",
+          borderRadius: "8px"
         }}
       >
         <ListItemText>

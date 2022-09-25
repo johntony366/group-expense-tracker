@@ -11,6 +11,7 @@ export const IncomeExpenses = () => {
         p: "12px",
         backgroundColor: "common.white",
         boxShadow: "0px 3px 5px 0px #BCBCBC",
+        borderRadius: "16px"
       }}
     >
       <Box className="income">
