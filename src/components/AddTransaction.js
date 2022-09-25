@@ -12,7 +12,7 @@ export const AddTransactionForm = () => {
   return (
     
     <Box className="addTransaction">
-      <Typography variant="h4">Add new transaction</Typography>
+      <Typography variant="h5">Add new transaction</Typography>
       <Divider />
       <form
         onSubmit={handleSubmit((data) => console.log(data))}

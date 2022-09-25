@@ -11,7 +11,7 @@ export const History = () => {
         my: "24px",
       }}
     >
-      <Typography variant="h4">History</Typography>
+      <Typography variant="h5">History</Typography>
       <Divider />
       <HistoryItems />
     </Box>

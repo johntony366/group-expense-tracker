@@ -3,6 +3,6 @@ import { Typography } from "@mui/material"
 
 export const Header = () => {
   return (
-    <Typography variant="h3">Expense tracker</Typography>
+    <Typography variant="h4">Expense tracker</Typography>
   )
 }

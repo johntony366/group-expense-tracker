@@ -7,8 +7,8 @@ export const Balance = () => {
       width: "100%",
       my: "24px"
     }}>
-      <Typography variant="h4">YOUR BALANCE</Typography>
-      <Typography variant="h2">$250</Typography>
+      <Typography variant="h4">Your Balance:</Typography>
+      <Typography variant="h3">$250</Typography>
     </Box>
   )
 }

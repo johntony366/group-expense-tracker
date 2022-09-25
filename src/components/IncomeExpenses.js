@@ -14,14 +14,14 @@ export const IncomeExpenses = () => {
       }}
     >
       <Box className="income">
-        <Typography variant="h4">INCOME</Typography>
-        <Typography variant="h4" color="success.light">
+        <Typography variant="h5">Income</Typography>
+        <Typography variant="h5" color="success.light">
           $500.00
         </Typography>
       </Box>
       <Box className="expenses">
-        <Typography variant="h4">EXPENSE</Typography>
-        <Typography variant="h4" color="error.light">
+        <Typography variant="h5">Expense</Typography>
+        <Typography variant="h5" color="error.light">
           $240.00
         </Typography>
       </Box>
