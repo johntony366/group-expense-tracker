@@ -1,6 +1,6 @@
 import React from "react";
 import { useForm, Controller } from "react-hook-form";
-import { TextField, Box, Typography, Divider } from "@mui/material";
+import { TextField, Box, Typography } from "@mui/material";
 
 export const AddTransactionForm = () => {
   const defaultValues = {
@@ -11,12 +11,11 @@ export const AddTransactionForm = () => {
 
   return (
     
-    <Box className="addTransaction">
-      <Typography variant="h5">Add new transaction</Typography>
-      <Divider />
+    <Box className="addTransaction" width="100%">
+      <Typography variant="h5" sx={{marginBottom: "16px"}}>Add new transaction</Typography>
       <form
         onSubmit={handleSubmit((data) => console.log(data))}
-        style={{ width: "100%", marginTop: "12px" }}
+        style={{ width: "100%"}}
       >
         <Box
           sx={{

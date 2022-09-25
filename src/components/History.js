@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Typography, Divider } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 
 import { HistoryItems } from "./HistoryItems";
 
@@ -12,7 +12,6 @@ export const History = () => {
       }}
     >
       <Typography variant="h5">History</Typography>
-      <Divider />
       <HistoryItems />
     </Box>
   );
