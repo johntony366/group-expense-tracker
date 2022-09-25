@@ -4,6 +4,7 @@ import { ThemeProvider } from "@mui/material"
 import { Header } from "./components/Header";
 import { Balance } from "./components/Balance";
 import { IncomeExpenses } from "./components/IncomeExpenses";
+import { History } from "./components/History"
 
 import { appTheme } from "./theme";
 import "./App.css";
@@ -25,6 +26,7 @@ function App() {
         <Header />
         <Balance />
         <IncomeExpenses />
+        <History />
       </Box>
     </ThemeProvider>
   );
