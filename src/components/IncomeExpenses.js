@@ -1,7 +1,22 @@
 import React from "react";
 import { Box, Typography } from "@mui/material";
 
+import { useTransactions } from "../context/TransactionProvider"
+
 export const IncomeExpenses = () => {
+  const transactions = useTransactions();
+
+  let income = 0, expense = 0;
+  transactions.forEach(transaction => {
+    const amount = Number(transaction.amount)
+    if (amount >= 0) {
+      income += amount;
+    } else {
+      expense += Math.abs(amount);
+    }
+  });
+
+  
   return (
     <Box
       className="income-expenses"
@@ -17,13 +32,13 @@ export const IncomeExpenses = () => {
       <Box className="income">
         <Typography variant="h5">Income</Typography>
         <Typography variant="h5" color="success.light">
-          $500.00
+          {income}
         </Typography>
       </Box>
       <Box className="expenses">
         <Typography variant="h5">Expense</Typography>
         <Typography variant="h5" color="error.light">
-          $240.00
+          {expense}
         </Typography>
       </Box>
     </Box>
