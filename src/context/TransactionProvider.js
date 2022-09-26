@@ -1,9 +1,9 @@
-import { createContext, useReducer } from "react";
+import { createContext, useContext, useReducer } from "react";
 
 import React from "react";
 
-export const TransactionsContext = createContext(null);
-export const TransactionsDispatchContext = createContext(null);
+const TransactionsContext = createContext(null);
+const TransactionsDispatchContext = createContext(null);
 
 export const TransactionProvider = ({ children }) => {
   const [transactions, dispatch] = useReducer(
@@ -25,6 +25,14 @@ const initialTransactions = [
   { itemName: "Book", amount: -40 },
   { itemName: "Car", amount: -5000 },
 ];
+
+export function useTransactions() {
+  return useContext(TransactionsContext);
+}
+
+export function useDispatch() {
+  return useContext(TransactionsDispatchContext);
+}
 
 function transactionsReducer(oldTransactions, action) {
   switch (action.type) {

@@ -2,7 +2,7 @@ import React from "react";
 import { Box, Typography, ListItem, ListItemText, IconButton } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 
-export const HistoryItem = ({ text, amount }) => {
+export const HistoryItem = ({ itemName, amount }) => {
   return (
     <Box
       sx={{
@@ -30,7 +30,7 @@ export const HistoryItem = ({ text, amount }) => {
               width: "100%",
             }}
           >
-            <Typography variant="body1">{text}</Typography>
+            <Typography variant="body1">{itemName}</Typography>
             <Typography variant="body1">
               {amount > 0 ? `+${amount}` : amount}
             </Typography>

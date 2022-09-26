@@ -1,22 +1,19 @@
 import React from "react";
-import { useContext } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { TextField, Box, Typography, Button } from "@mui/material";
 
-import { TransactionsContext, TransactionsDispatchContext } from "../context/TransactionProvider"
+import { useTransactions, useDispatch } from "../context/TransactionProvider";
 
 export const AddTransactionForm = () => {
-
   const { handleSubmit, reset, setValue, control } = useForm();
-  const transactions = useContext(TransactionsContext);
-  const dispatch = useContext(TransactionsDispatchContext);
+  const dispatch = useDispatch();
 
   function handleAddTransaction(data) {
     dispatch({
       type: "added_transaction",
       itemName: data.itemName,
-      amount: data.amount
-    })
+      amount: data.amount,
+    });
   }
 
   return (
