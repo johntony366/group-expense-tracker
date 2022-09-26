@@ -32,13 +32,13 @@ export const IncomeExpenses = () => {
       <Box className="income">
         <Typography variant="h5">Income</Typography>
         <Typography variant="h5" color="success.light">
-          {income}
+          ₹{income}
         </Typography>
       </Box>
       <Box className="expenses">
         <Typography variant="h5">Expense</Typography>
         <Typography variant="h5" color="error.light">
-          {expense}
+          ₹{expense}
         </Typography>
       </Box>
     </Box>

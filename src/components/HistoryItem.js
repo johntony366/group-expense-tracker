@@ -49,7 +49,7 @@ export const HistoryItem = ({ itemName, amount, uuid }) => {
           >
             <Typography variant="body1">{itemName}</Typography>
             <Typography variant="body1">
-              {amount > 0 ? `+${amount}` : amount}
+              {amount >= 0 ? `+₹${amount}` : `-₹${Math.abs(amount)}`}
             </Typography>
           </Box>
         </ListItemText>
