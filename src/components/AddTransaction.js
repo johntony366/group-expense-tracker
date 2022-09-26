@@ -1,10 +1,23 @@
 import React from "react";
+import { useContext } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { TextField, Box, Typography, Button } from "@mui/material";
+
+import { TransactionsContext, TransactionsDispatchContext } from "../context/TransactionProvider"
 
 export const AddTransactionForm = () => {
 
   const { handleSubmit, reset, setValue, control } = useForm();
+  const transactions = useContext(TransactionsContext);
+  const dispatch = useContext(TransactionsDispatchContext);
+
+  function handleAddTransaction(data) {
+    dispatch({
+      type: "added_transaction",
+      itemName: data.itemName,
+      amount: data.amount
+    })
+  }
 
   return (
     <Box className="addTransaction" width="clamp(250px, 50%, 500px)">
@@ -12,7 +25,7 @@ export const AddTransactionForm = () => {
         Add new transaction
       </Typography>
       <form
-        onSubmit={handleSubmit((data) => console.log(data))}
+        onSubmit={handleSubmit((data) => handleAddTransaction(data))}
         style={{ width: "100%" }}
       >
         <Box
@@ -34,7 +47,7 @@ export const AddTransactionForm = () => {
                 />
               )}
               rules={{ required: true }}
-              name="ItemName"
+              name="itemName"
               control={control}
               defaultValue=""
             />
@@ -51,7 +64,7 @@ export const AddTransactionForm = () => {
                 />
               )}
               rules={{ required: true }}
-              name="Amount"
+              name="amount"
               control={control}
               defaultValue=""
             />
