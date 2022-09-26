@@ -17,7 +17,16 @@ export const AddTransactionForm = () => {
   }
 
   return (
-    <Box className="addTransaction" width="clamp(250px, 50%, 500px)">
+    <Box
+      className="addTransaction"
+      sx={{
+        width: "clamp(250px, 50%, 500px)",
+        marginTop: "24px",
+        border: 1,
+        borderColor: "grey.400",
+        padding: "12px",
+      }}
+    >
       <Typography variant="h5" sx={{ marginBottom: "16px" }}>
         Add new transaction
       </Typography>

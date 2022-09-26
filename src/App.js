@@ -30,8 +30,8 @@ function App() {
           <Header />
           <Balance />
           <IncomeExpenses />
-          <History />
           <AddTransactionForm />
+          <History />
         </Box>
       </TransactionProvider>
     </ThemeProvider>
