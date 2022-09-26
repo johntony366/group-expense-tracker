@@ -1,4 +1,5 @@
 {
+  "homepage": "https://johntony366.github.io/expense-tracker-app/",
   "name": "expense-tracker-app",
   "version": "0.1.0",
   "private": true,
@@ -23,7 +24,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "deploy": "gh-pages -d dist",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "repository": {
     "type": "git",
