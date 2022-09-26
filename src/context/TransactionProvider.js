@@ -42,7 +42,10 @@ function transactionsReducer(oldTransactions, action) {
         { itemName: action.itemName, amount: action.amount, uuid: uuidv4() },
         ...oldTransactions,
       ];
-
+    
+    case "deleted_transaction":
+      return oldTransactions.filter((oldTransaction) => oldTransaction.uuid !== action.targetId)
+    
     default:
       throw Error("Unknown action: " + action.type);
   }

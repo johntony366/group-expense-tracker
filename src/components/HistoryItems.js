@@ -10,7 +10,7 @@ export const HistoryItems = () => {
   return (
     <List sx={{ display: "flex", flexDirection: "column", alignItems: "center  " }}>
       {transactions.map((transaction, i) => {
-        return <HistoryItem itemName={transaction.itemName} amount={transaction.amount} key={i} />;
+        return <HistoryItem itemName={transaction.itemName} amount={transaction.amount} uuid={transaction.uuid} key={i} />;
       })}
     </List>
   );

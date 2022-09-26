@@ -1,8 +1,25 @@
 import React from "react";
-import { Box, Typography, ListItem, ListItemText, IconButton } from "@mui/material";
+import {
+  Box,
+  Typography,
+  ListItem,
+  ListItemText,
+  IconButton,
+} from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 
-export const HistoryItem = ({ itemName, amount }) => {
+import { useDispatch } from "../context/TransactionProvider";
+
+export const HistoryItem = ({ itemName, amount, uuid }) => {
+  const dispatch = useDispatch();
+
+  function handleDelete(targetId) {
+    dispatch({
+      type: "deleted_transaction",
+      targetId: targetId,
+    });
+  }
+
   return (
     <Box
       sx={{
@@ -40,6 +57,7 @@ export const HistoryItem = ({ itemName, amount }) => {
       <IconButton
         className="deleteIcon"
         sx={{ height: "40px", width: "40px", display: "none" }}
+        onClick={() => handleDelete(uuid)}
       >
         <DeleteIcon />
       </IconButton>
