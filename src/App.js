@@ -21,7 +21,8 @@ function App() {
           justifyContent: "center",
           alignItems: "center",
           height: "100%",
-          width: "clamp(300px, 50%, 800px)"
+          width: "clamp(300px, 50%, 800px)",
+          p: "48px"
         }}
       >
         <Header />
