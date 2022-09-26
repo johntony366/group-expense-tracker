@@ -81,7 +81,7 @@ export const AddTransactionForm = () => {
               type="submit"
               sx={{ backgroundColor: "primary.main" }}
             >
-              Submit
+              Add
             </Button>
           </section>
         </Box>
