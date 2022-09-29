@@ -7,11 +7,12 @@ import { useDispatch } from "../context/TransactionProvider";
 import { FirebaseStorage } from "../FirebaseStorage";
 
 export const AddTransactionForm = () => {
-  const { handleSubmit, control, reset } = useForm();
+  const { handleSubmit, control, reset, setFocus } = useForm();
   const dispatch = useDispatch();
 
   function handleAddTransaction(data) {
     FirebaseStorage.addTransaction(dispatch, data.itemName, data.amount);
+    setFocus("itemName");
     reset();
   }
 
@@ -43,14 +44,17 @@ export const AddTransactionForm = () => {
         >
           <section>
             <Controller
-              render={({ field }) => (
-                <TextField
-                  label={"Item"}
-                  placeholder={"Enter item..."}
-                  sx={{ width: "100%" }}
-                  {...field}
-                />
-              )}
+              render={({ field: { ref, ...field } }) => {
+                return (
+                  <TextField
+                    {...field}
+                    inputRef={ref}
+                    label={"Item"}
+                    placeholder={"Enter item..."}
+                    sx={{ width: "100%" }}
+                  />
+                );
+              }}
               rules={{ required: true }}
               name="itemName"
               control={control}
