@@ -28,13 +28,6 @@ export class FirebaseStorage {
       amount: amount,
       id: transactionRef.id,
     });
-
-    dispatch({
-      type: "added_transaction",
-      itemName: itemName,
-      amount: amount,
-      id: transactionRef.id,
-    });
   }
 
   static async deleteTransaction(dispatch, id) {
@@ -46,7 +39,5 @@ export class FirebaseStorage {
         deleteDoc(doc.ref);
       }
     });
-
-    dispatch({ type: "deleted_transaction", targetId: id });
   }
 }

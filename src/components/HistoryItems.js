@@ -1,18 +1,27 @@
 import React from "react";
-import { useEffect } from "react"
+import { useEffect } from "react";
 import { List } from "@mui/material";
+import { onSnapshot, collection } from "firebase/firestore";
 
 import { HistoryItem } from "./HistoryItem";
 import { useDispatch, useTransactions } from "../context/TransactionProvider";
 import { FirebaseStorage } from "../FirebaseStorage";
+import { db } from "../firebase-config";
 
 export const HistoryItems = () => {
   const transactions = useTransactions();
   const dispatch = useDispatch();
 
   useEffect(() => {
-    FirebaseStorage.getTransactions(dispatch);
-    console.log("Fetched transactions")
+    const unsub = onSnapshot(
+      collection(db, "users/temp/transactions"),
+      (querySnapshot) => {
+        FirebaseStorage.getTransactions(dispatch);
+        console.log("Fetched transactions");
+      }
+    );
+
+    return unsub;
   }, [dispatch]);
 
   return (

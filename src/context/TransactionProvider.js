@@ -30,21 +30,6 @@ function transactionsReducer(oldTransactions, action) {
     case "got_transactions":
       return [...action.transactions];
 
-    case "added_transaction":
-      return [
-        {
-          itemName: action.itemName,
-          amount: action.amount,
-          id: action.id,
-        },
-        ...oldTransactions,
-      ];
-
-    case "deleted_transaction":
-      return oldTransactions.filter(
-        (oldTransaction) => oldTransaction.id !== action.targetId
-      );
-
     default:
       throw Error("Unknown action: " + action.type);
   }
