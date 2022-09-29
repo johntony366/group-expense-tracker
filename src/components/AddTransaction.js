@@ -11,7 +11,8 @@ export const AddTransactionForm = () => {
   const dispatch = useDispatch();
 
   function handleAddTransaction(data) {
-    FirebaseStorage.addTransaction(dispatch, data.itemName, data.amount);
+    const roundedAmount = Math.round(data.amount * 100 + Number.EPSILON) / 100;
+    FirebaseStorage.addTransaction(dispatch, data.itemName, roundedAmount);
     setFocus("itemName");
     reset();
   }
@@ -66,6 +67,9 @@ export const AddTransactionForm = () => {
               render={({ field }) => (
                 <TextField
                   type="number"
+                  inputProps={{
+                    step: "any",
+                  }}
                   label={"Amount"}
                   placeholder={"Enter amount..."}
                   sx={{ width: "100%" }}
