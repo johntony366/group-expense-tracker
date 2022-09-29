@@ -2,16 +2,16 @@ import React from "react";
 import { useForm, Controller } from "react-hook-form";
 import { TextField, Box, Typography, Button } from "@mui/material";
 
-import { useTransactions, useDispatch } from "../context/TransactionProvider";
+import { useDispatch } from "../context/TransactionProvider";
 
-import { FirebaseStorage } from "../FirebaseStorage"
+import { FirebaseStorage } from "../FirebaseStorage";
 
 export const AddTransactionForm = () => {
-  const { handleSubmit, reset, setValue, control } = useForm();
+  const { handleSubmit, control } = useForm();
   const dispatch = useDispatch();
 
   function handleAddTransaction(data) {
-    FirebaseStorage.addTransaction(dispatch, data.itemName, data.amount)
+    FirebaseStorage.addTransaction(dispatch, data.itemName, data.amount);
   }
 
   return (

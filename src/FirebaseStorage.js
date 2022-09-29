@@ -7,7 +7,6 @@ import {
 } from "firebase/firestore";
 
 import { db } from "./firebase-config";
-import { useDispatch } from "./context/TransactionProvider";
 
 export class FirebaseStorage {
   static async getTransactions(dispatch) {

@@ -1,5 +1,5 @@
 import React from "react";
-import { List, Box } from "@mui/material";
+import { List } from "@mui/material";
 
 import { HistoryItem } from "./HistoryItem";
 import { useDispatch, useTransactions } from "../context/TransactionProvider";
