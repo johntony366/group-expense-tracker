@@ -7,11 +7,12 @@ import { useDispatch } from "../context/TransactionProvider";
 import { FirebaseStorage } from "../FirebaseStorage";
 
 export const AddTransactionForm = () => {
-  const { handleSubmit, control } = useForm();
+  const { handleSubmit, control, reset } = useForm();
   const dispatch = useDispatch();
 
   function handleAddTransaction(data) {
     FirebaseStorage.addTransaction(dispatch, data.itemName, data.amount);
+    reset();
   }
 
   return (
