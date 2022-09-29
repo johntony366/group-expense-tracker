@@ -14,6 +14,10 @@ import { FirebaseStorage } from "../FirebaseStorage";
 export const HistoryItem = ({ itemName, amount, id }) => {
   const dispatch = useDispatch();
 
+  function handleDelete() {
+    FirebaseStorage.deleteTransaction(dispatch, id);
+  }
+
   return (
     <Box
       sx={{
@@ -51,7 +55,7 @@ export const HistoryItem = ({ itemName, amount, id }) => {
       <IconButton
         className="deleteIcon"
         sx={{ height: "40px", width: "40px", display: "none" }}
-        onClick={() => FirebaseStorage.deleteTransaction(dispatch, id)}
+        onClick={handleDelete}
       >
         <DeleteIcon />
       </IconButton>

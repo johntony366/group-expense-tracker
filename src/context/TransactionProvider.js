@@ -42,7 +42,7 @@ function transactionsReducer(oldTransactions, action) {
 
     case "deleted_transaction":
       return oldTransactions.filter(
-        (oldTransaction) => oldTransaction.uuid !== action.targetId
+        (oldTransaction) => oldTransaction.id !== action.targetId
       );
 
     default:
