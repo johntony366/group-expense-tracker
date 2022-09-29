@@ -5,7 +5,6 @@ import { onSnapshot, collection } from "firebase/firestore";
 
 import { HistoryItem } from "./HistoryItem";
 import { useDispatch, useTransactions } from "../context/TransactionProvider";
-import { FirebaseStorage } from "../FirebaseStorage";
 import { db } from "../firebase-config";
 
 export const HistoryItems = () => {
@@ -16,7 +15,8 @@ export const HistoryItems = () => {
     const unsub = onSnapshot(
       collection(db, "users/temp/transactions"),
       (querySnapshot) => {
-        FirebaseStorage.getTransactions(dispatch);
+        const transactions = querySnapshot.docs.map((doc) => doc.data());
+        dispatch({type: "got_transactions", transactions: transactions})
         console.log("Fetched transactions");
       }
     );
