@@ -4,6 +4,7 @@ import {
   getDocs,
   setDoc,
   deleteDoc,
+  serverTimestamp
 } from "firebase/firestore";
 
 import { db } from "./firebase-config";
@@ -27,6 +28,7 @@ export class FirebaseStorage {
       itemName: itemName,
       amount: amount,
       id: transactionRef.id,
+      timestamp: serverTimestamp()
     });
   }
 

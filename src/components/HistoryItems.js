@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect } from "react";
 import { List } from "@mui/material";
-import { onSnapshot, collection } from "firebase/firestore";
+import { onSnapshot, collection, query, orderBy } from "firebase/firestore";
 
 import { HistoryItem } from "./HistoryItem";
 import { useDispatch, useTransactions } from "../context/TransactionProvider";
@@ -13,11 +13,10 @@ export const HistoryItems = () => {
 
   useEffect(() => {
     const unsub = onSnapshot(
-      collection(db, "users/temp/transactions"),
+      query(collection(db, "users/temp/transactions"), orderBy('timestamp', "desc")),
       (querySnapshot) => {
         const transactions = querySnapshot.docs.map((doc) => doc.data());
         dispatch({type: "got_transactions", transactions: transactions})
-        console.log("Fetched transactions");
       }
     );
 
