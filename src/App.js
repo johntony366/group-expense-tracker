@@ -10,8 +10,13 @@ import { TransactionProvider } from "./context/TransactionProvider";
 
 import { appTheme } from "./theme";
 import "./App.css";
+import { useEffect } from "react";
 
 function App() {
+  useEffect(() => {
+    
+  })
+  
   return (
     <ThemeProvider theme={appTheme}>
       <TransactionProvider>

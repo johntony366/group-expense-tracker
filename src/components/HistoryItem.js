@@ -9,16 +9,10 @@ import {
 import DeleteIcon from "@mui/icons-material/Delete";
 
 import { useDispatch } from "../context/TransactionProvider";
+import { FirebaseStorage } from "../FirebaseStorage";
 
-export const HistoryItem = ({ itemName, amount, uuid }) => {
+export const HistoryItem = ({ itemName, amount, id }) => {
   const dispatch = useDispatch();
-
-  function handleDelete(targetId) {
-    dispatch({
-      type: "deleted_transaction",
-      targetId: targetId,
-    });
-  }
 
   return (
     <Box
@@ -57,7 +51,7 @@ export const HistoryItem = ({ itemName, amount, uuid }) => {
       <IconButton
         className="deleteIcon"
         sx={{ height: "40px", width: "40px", display: "none" }}
-        onClick={() => handleDelete(uuid)}
+        onClick={() => FirebaseStorage.deleteTransaction(dispatch, id)}
       >
         <DeleteIcon />
       </IconButton>

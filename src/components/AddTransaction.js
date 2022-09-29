@@ -4,16 +4,14 @@ import { TextField, Box, Typography, Button } from "@mui/material";
 
 import { useTransactions, useDispatch } from "../context/TransactionProvider";
 
+import { FirebaseStorage } from "../FirebaseStorage"
+
 export const AddTransactionForm = () => {
   const { handleSubmit, reset, setValue, control } = useForm();
   const dispatch = useDispatch();
 
   function handleAddTransaction(data) {
-    dispatch({
-      type: "added_transaction",
-      itemName: data.itemName,
-      amount: data.amount,
-    });
+    FirebaseStorage.addTransaction(dispatch, data.itemName, data.amount)
   }
 
   return (
