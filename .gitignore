@@ -3,7 +3,7 @@
 # api key
 .env
 
-.firebase/*
+.firebase/
 
 # dependencies
 /node_modules
