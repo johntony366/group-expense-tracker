@@ -14,7 +14,7 @@ import { useAuth } from "./context/AuthProvider";
 
 export const SignupForm = () => {
   const { handleSubmit, control, reset, setFocus } = useForm();
-  const { signupUser } = useAuth();
+  const { signupUser, currentUser } = useAuth();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -34,6 +34,7 @@ export const SignupForm = () => {
     }
 
     setLoading(false);
+    console.log(currentUser);
   }
 
   return (
