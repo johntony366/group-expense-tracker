@@ -7,12 +7,14 @@ import {
   TextField,
   Typography,
   Alert,
+  Link as MuiLink,
 } from "@mui/material";
 import { Box } from "@mui/system";
 
 import { useAuth } from "./context/AuthProvider";
+import { Link } from "react-router-dom";
 
-export const SignupForm = () => {
+export const Signup = () => {
   const { handleSubmit, control, reset, setFocus } = useForm();
   const { signupUser, currentUser } = useAuth();
   const [error, setError] = useState("");
@@ -139,6 +141,13 @@ export const SignupForm = () => {
             </Grid>
           </form>
         </Paper>
+
+        <Typography sx={{ marginTop: 4 }}>
+          Already have an account?{" "}
+          <MuiLink>
+            <Link>Login</Link>
+          </MuiLink>
+        </Typography>
       </Box>
     </Box>
   );

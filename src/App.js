@@ -8,7 +8,7 @@ import { AuthProvider } from "./context/AuthProvider";
 import { appTheme } from "./theme";
 import "./App.css";
 import { useEffect } from "react";
-import { SignupForm } from "./Signup";
+import { Signup } from "./Signup";
 import { Dashboard } from "./components/Dashboard";
 
 function App() {
@@ -31,8 +31,9 @@ function App() {
           <TransactionProvider>
             <AuthProvider>
               <Routes>
-                <Route path="/signup" element={<SignupForm />} />
+                <Route path="/signup" element={<Signup />} />
                 <Route path="/dashboard" element={<Dashboard />} />
+                {/* <Route path="/login" element={<Login />} /> */}
               </Routes>
             </AuthProvider>
           </TransactionProvider>
