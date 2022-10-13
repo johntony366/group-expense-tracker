@@ -1,10 +1,10 @@
 import React from "react";
 
-import { Header } from "./Header";
-import { Balance } from "./Balance";
-import { IncomeExpenses } from "./IncomeExpenses";
-import { History } from "./History";
-import { AddTransactionForm } from "./AddTransaction";
+import { Header } from "./Dashboard/Header";
+import { Balance } from "components/Dashboard/Balance";
+import { IncomeExpenses } from "./Dashboard/IncomeExpenses";
+import { History } from "components/Dashboard/History";
+import { AddTransactionForm } from "./Dashboard/AddTransaction";
 import { Box } from "@mui/system";
 
 export const Dashboard = () => {

@@ -4,8 +4,8 @@ import { List } from "@mui/material";
 import { onSnapshot, collection, query, orderBy } from "firebase/firestore";
 
 import { HistoryItem } from "./HistoryItem";
-import { useDispatch, useTransactions } from "../context/TransactionProvider";
-import { db } from "../firebase-config";
+import { useDispatch, useTransactions } from "context/TransactionProvider";
+import { db } from "firebase-config";
 
 export const HistoryItems = () => {
   const transactions = useTransactions();

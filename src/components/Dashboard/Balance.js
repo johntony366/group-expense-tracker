@@ -1,12 +1,15 @@
-import React from 'react'
-import { Box, Typography } from "@mui/material"
+import React from "react";
+import { Box, Typography } from "@mui/material";
 
-import { useTransactions } from '../context/TransactionProvider'
+import { useTransactions } from "context/TransactionProvider";
 
 export const Balance = () => {
   const transactions = useTransactions();
-  const balance = transactions.reduce((sum, transaction) => sum + Number(transaction.amount), 0)
-  
+  const balance = transactions.reduce(
+    (sum, transaction) => sum + Number(transaction.amount),
+    0
+  );
+
   return (
     <Box
       className="balance"
@@ -21,4 +24,4 @@ export const Balance = () => {
       </Typography>
     </Box>
   );
-}
+};

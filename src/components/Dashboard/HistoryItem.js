@@ -8,8 +8,8 @@ import {
 } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 
-import { useDispatch } from "../context/TransactionProvider";
-import { FirebaseStorage } from "../FirebaseStorage";
+import { useDispatch } from "context/TransactionProvider";
+import { FirebaseStorage } from "FirebaseStorage";
 
 export const HistoryItem = ({ itemName, amount, id }) => {
   const dispatch = useDispatch();

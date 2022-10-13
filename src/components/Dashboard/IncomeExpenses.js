@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Typography } from "@mui/material";
 
-import { useTransactions } from "../context/TransactionProvider"
+import { useTransactions } from "../../context/TransactionProvider"
 
 export const IncomeExpenses = () => {
   const transactions = useTransactions();

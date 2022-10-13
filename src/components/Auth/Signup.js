@@ -11,7 +11,7 @@ import {
 } from "@mui/material";
 import { Box } from "@mui/system";
 
-import { useAuth } from "./context/AuthProvider";
+import { useAuth } from "../../context/AuthProvider";
 import { Link } from "react-router-dom";
 
 export const Signup = () => {

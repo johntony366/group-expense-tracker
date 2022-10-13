@@ -8,8 +8,9 @@ import { AuthProvider } from "./context/AuthProvider";
 import { appTheme } from "./theme";
 import "./App.css";
 import { useEffect } from "react";
-import { Signup } from "./Signup";
+import { Signup } from "./components/Auth/Signup";
 import { Dashboard } from "./components/Dashboard";
+import { Login } from "@mui/icons-material";
 
 function App() {
   useEffect(() => {});
@@ -33,7 +34,7 @@ function App() {
               <Routes>
                 <Route path="/signup" element={<Signup />} />
                 <Route path="/dashboard" element={<Dashboard />} />
-                {/* <Route path="/login" element={<Login />} /> */}
+                <Route path="/login" element={<Login />} />
               </Routes>
             </AuthProvider>
           </TransactionProvider>

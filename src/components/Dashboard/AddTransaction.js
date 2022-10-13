@@ -2,9 +2,9 @@ import React from "react";
 import { useForm, Controller } from "react-hook-form";
 import { TextField, Box, Typography, Button } from "@mui/material";
 
-import { useDispatch } from "../context/TransactionProvider";
+import { useDispatch } from "../../context/TransactionProvider";
 
-import { FirebaseStorage } from "../FirebaseStorage";
+import { FirebaseStorage } from "../../FirebaseStorage";
 
 export const AddTransactionForm = () => {
   const { handleSubmit, control, reset, setFocus } = useForm();

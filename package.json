@@ -33,18 +33,6 @@
     "type": "git",
     "url": "git+https://github.com/johntony366/expense-tracker-app.git"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ],
-    "plugins": [
-      "import"
-    ],
-    "rules": {
-      "import/no-unresolved": 2
-    }
-  },
   "browserslist": {
     "production": [
       ">0.2%",
