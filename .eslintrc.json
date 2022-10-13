@@ -1,0 +1,19 @@
+{
+   "extends": [
+      "react-app",
+      "react-app/jest"
+    ],
+    "plugins": [
+      "import"
+    ],
+    "rules": {
+      "import/no-unresolved": 2
+    },
+    "settings": {
+    "import/resolver": {
+      "node": {
+        "paths": ["src"]
+      }
+    }
+  }
+}
