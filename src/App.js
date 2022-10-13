@@ -10,7 +10,7 @@ import "./App.css";
 import { useEffect } from "react";
 import { Signup } from "./components/Auth/Signup";
 import { Dashboard } from "./components/Dashboard";
-import { Login } from "@mui/icons-material";
+import { Login } from "components/Auth/Login";
 
 function App() {
   useEffect(() => {});

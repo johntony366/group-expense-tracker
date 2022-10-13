@@ -15,7 +15,7 @@ import { useAuth } from "../../context/AuthProvider";
 import { Link } from "react-router-dom";
 
 export const Signup = () => {
-  const { handleSubmit, control, reset, setFocus } = useForm();
+  const { handleSubmit, control, reset } = useForm();
   const { signupUser, currentUser } = useAuth();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
@@ -145,7 +145,7 @@ export const Signup = () => {
         <Typography sx={{ marginTop: 4 }}>
           Already have an account?{" "}
           <MuiLink>
-            <Link>Login</Link>
+            <Link to="/login">Login</Link>
           </MuiLink>
         </Typography>
       </Box>
