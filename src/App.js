@@ -2,12 +2,6 @@ import { Box } from "@mui/material";
 import { ThemeProvider } from "@mui/material";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-// import { Header } from "./components/Header";
-// import { Balance } from "./components/Balance";
-// import { IncomeExpenses } from "./components/IncomeExpenses";
-// import { History } from "./components/History";
-// import { AddTransactionForm } from "./components/AddTransaction";
-
 import { TransactionProvider } from "./context/TransactionProvider";
 import { AuthProvider } from "./context/AuthProvider";
 
@@ -15,6 +9,7 @@ import { appTheme } from "./theme";
 import "./App.css";
 import { useEffect } from "react";
 import { SignupForm } from "./Signup";
+import { Dashboard } from "./components/Dashboard";
 
 function App() {
   useEffect(() => {});
@@ -36,13 +31,9 @@ function App() {
           <TransactionProvider>
             <AuthProvider>
               <Routes>
-                <Route path="/signup" element={<SignupForm/>}/>
+                <Route path="/signup" element={<SignupForm />} />
+                <Route path="/dashboard" element={<Dashboard />} />
               </Routes>
-              {/* <Header />
-              <Balance />
-              <IncomeExpenses />
-              <AddTransactionForm />
-              <History /> */}
             </AuthProvider>
           </TransactionProvider>
         </BrowserRouter>
