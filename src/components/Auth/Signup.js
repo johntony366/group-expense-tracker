@@ -7,12 +7,12 @@ import {
   TextField,
   Typography,
   Alert,
-  Link as MuiLink,
+  Link,
 } from "@mui/material";
 import { Box } from "@mui/system";
 
 import { useAuth } from "../../context/AuthProvider";
-import { Link } from "react-router-dom";
+import { Link as RouterLink } from "react-router-dom";
 
 export const Signup = () => {
   const { handleSubmit, control, reset } = useForm();
@@ -144,9 +144,9 @@ export const Signup = () => {
 
         <Typography sx={{ marginTop: 4 }}>
           Already have an account?{" "}
-          <MuiLink>
-            <Link to="/login">Login</Link>
-          </MuiLink>
+          <Link component={RouterLink} to="/login">
+            Login
+          </Link>
         </Typography>
       </Box>
     </Box>
