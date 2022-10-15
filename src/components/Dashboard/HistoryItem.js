@@ -10,12 +10,28 @@ import DeleteIcon from "@mui/icons-material/Delete";
 
 import { useDispatch } from "context/TransactionProvider";
 import { FirebaseStorage } from "FirebaseStorage";
+import { useAuth } from "context/AuthProvider";
+import { collection, deleteDoc, getDocs } from "firebase/firestore";
+import { db } from "firebase-config";
 
 export const HistoryItem = ({ itemName, amount, id }) => {
   const dispatch = useDispatch();
+  const { currentUser } = useAuth();
+
+  async function deleteTransactionFromFirestore(id) {
+    const colRef = collection(db, `users/${currentUser.uid}/transactions`);
+    const querySnapshot = await getDocs(colRef);
+
+    querySnapshot.forEach(async (doc) => {
+      if (doc.id === id) {
+        deleteDoc(doc.ref);
+      }
+    });
+  }
 
   function handleDelete() {
-    FirebaseStorage.deleteTransaction(dispatch, id);
+    // FirebaseStorage.deleteTransaction(dispatch, id);
+    deleteTransactionFromFirestore(id);
   }
 
   return (

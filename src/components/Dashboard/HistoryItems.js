@@ -6,14 +6,16 @@ import { onSnapshot, collection, query, orderBy } from "firebase/firestore";
 import { HistoryItem } from "./HistoryItem";
 import { useDispatch, useTransactions } from "context/TransactionProvider";
 import { db } from "firebase-config";
+import { useAuth } from "context/AuthProvider";
 
 export const HistoryItems = () => {
   const transactions = useTransactions();
   const dispatch = useDispatch();
+  const { currentUser } = useAuth();
 
   useEffect(() => {
     const unsub = onSnapshot(
-      query(collection(db, "users/temp/transactions"), orderBy('timestamp', "desc")),
+      query(collection(db, `users/${currentUser.uid}/transactions`), orderBy('timestamp', "desc")),
       (querySnapshot) => {
         const transactions = querySnapshot.docs.map((doc) => doc.data());
         dispatch({type: "got_transactions", transactions: transactions})
