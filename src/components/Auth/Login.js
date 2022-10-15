@@ -47,9 +47,11 @@ export const Login = () => {
         alignItems: "center",
       }}
     >
-      <Box className="loginForm">
+      <Box className="loginForm" sx={{
+        width: "clamp(250px, 70%, 600px)"
+      }}>
         <Paper
-          elevation={12}
+          elevation={2}
           sx={{
             p: 4,
           }}

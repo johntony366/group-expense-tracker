@@ -52,9 +52,14 @@ export const Signup = () => {
         alignItems: "center",
       }}
     >
-      <Box className="signupForm">
+      <Box
+        className="signupForm"
+        sx={{
+          width: "clamp(250px, 70%, 600px)",
+        }}
+      >
         <Paper
-          elevation={12}
+          elevation={2}
           sx={{
             p: 4,
           }}
