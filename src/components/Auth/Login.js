@@ -17,7 +17,7 @@ import {
 
 export const Login = () => {
   const { handleSubmit, control, reset } = useForm();
-  const { loginUser, currentUser } = useAuth();
+  const { loginUser } = useAuth();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();

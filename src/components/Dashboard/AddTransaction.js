@@ -2,21 +2,16 @@ import React from "react";
 import { useForm, Controller } from "react-hook-form";
 import { TextField, Box, Typography, Button } from "@mui/material";
 
-import { useDispatch } from "../../context/TransactionProvider";
-
-import { FirebaseStorage } from "../../FirebaseStorage";
 import { setDoc, collection, serverTimestamp, doc } from "firebase/firestore";
 import { useAuth } from "context/AuthProvider";
 import { db } from "firebase-config";
 
 export const AddTransactionForm = () => {
   const { handleSubmit, control, reset, setFocus } = useForm();
-  const dispatch = useDispatch();
   const { currentUser } = useAuth();
 
   async function handleAddTransaction(data) {
     const roundedAmount = Math.round(data.amount * 100 + Number.EPSILON) / 100;
-    // FirebaseStorage.addTransaction(dispatch, data.itemName, roundedAmount);
     addTransactionToFirestore(data.itemName, roundedAmount);
 
     setFocus("itemName");

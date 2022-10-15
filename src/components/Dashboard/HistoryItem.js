@@ -8,14 +8,11 @@ import {
 } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 
-import { useDispatch } from "context/TransactionProvider";
-import { FirebaseStorage } from "FirebaseStorage";
 import { useAuth } from "context/AuthProvider";
 import { collection, deleteDoc, getDocs } from "firebase/firestore";
 import { db } from "firebase-config";
 
 export const HistoryItem = ({ itemName, amount, id }) => {
-  const dispatch = useDispatch();
   const { currentUser } = useAuth();
 
   async function deleteTransactionFromFirestore(id) {

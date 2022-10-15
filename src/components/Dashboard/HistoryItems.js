@@ -23,7 +23,7 @@ export const HistoryItems = () => {
     );
 
     return unsub;
-  }, [dispatch]);
+  }, [dispatch, currentUser.uid]);
 
   return (
     <List
