@@ -1,6 +1,6 @@
 import { Box } from "@mui/material";
 import { ThemeProvider } from "@mui/material";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 import { TransactionProvider } from "./context/TransactionProvider";
 import { AuthProvider } from "./context/AuthProvider";
@@ -32,6 +32,7 @@ function App() {
           <TransactionProvider>
             <AuthProvider>
               <Routes>
+                <Route path="/" element={<Navigate to="/dashboard"/>} />
                 <Route path="/signup" element={<Signup />} />
                 <Route path="/dashboard" element={<Dashboard />} />
                 <Route path="/login" element={<Login />} />
