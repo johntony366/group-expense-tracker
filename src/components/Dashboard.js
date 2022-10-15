@@ -6,12 +6,14 @@ import { IncomeExpenses } from "./Dashboard/IncomeExpenses";
 import { History } from "components/Dashboard/History";
 import { AddTransactionForm } from "./Dashboard/AddTransaction";
 import { Box } from "@mui/system";
+import { UserInfo } from "./Dashboard/UserInfo";
 
 export const Dashboard = () => {
   return (
     <Box className="dashboard" sx={{
-      width: "100%"
+      width: "clamp(300px, 70%, 800px)",
     }}>
+      <UserInfo />
       <Header />
       <Balance />
       <IncomeExpenses />

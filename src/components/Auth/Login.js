@@ -34,7 +34,6 @@ export const Login = () => {
     }
 
     setLoading(false);
-    console.log(currentUser);
   }
 
   return (
