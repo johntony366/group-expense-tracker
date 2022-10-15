@@ -5,16 +5,36 @@ import { TextField, Box, Typography, Button } from "@mui/material";
 import { useDispatch } from "../../context/TransactionProvider";
 
 import { FirebaseStorage } from "../../FirebaseStorage";
+import { setDoc, collection, serverTimestamp, doc } from "firebase/firestore";
+import { useAuth } from "context/AuthProvider";
+import { db } from "firebase-config";
 
 export const AddTransactionForm = () => {
   const { handleSubmit, control, reset, setFocus } = useForm();
   const dispatch = useDispatch();
+  const { currentUser } = useAuth();
 
-  function handleAddTransaction(data) {
+  async function handleAddTransaction(data) {
     const roundedAmount = Math.round(data.amount * 100 + Number.EPSILON) / 100;
-    FirebaseStorage.addTransaction(dispatch, data.itemName, roundedAmount);
+    // FirebaseStorage.addTransaction(dispatch, data.itemName, roundedAmount);
+    addTransactionToFirestore(data.itemName, roundedAmount);
+
     setFocus("itemName");
     reset();
+  }
+
+  async function addTransactionToFirestore(itemName, amount) {
+    const transactionRef = doc(collection(
+      db,
+      `users/${currentUser.uid}/transactions`
+    ));
+
+    await setDoc(transactionRef, {
+      itemName: itemName,
+      amount: amount,
+      id: transactionRef.id,
+      timestamp: serverTimestamp(),
+    });
   }
 
   return (

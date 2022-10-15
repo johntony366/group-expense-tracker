@@ -12,13 +12,14 @@ import {
 import { Box } from "@mui/system";
 
 import { useAuth } from "../../context/AuthProvider";
-import { Link as RouterLink } from "react-router-dom";
+import { Link as RouterLink, useNavigate } from "react-router-dom";
 
 export const Signup = () => {
   const { handleSubmit, control, reset } = useForm();
   const { signupUser, currentUser } = useAuth();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   async function handleSubmitSignupForm(data) {
     if (data.confirmPassword !== data.password) {
@@ -31,6 +32,7 @@ export const Signup = () => {
       setLoading(true);
       await signupUser(data.email, data.password);
       reset();
+      navigate("/dashboard");
     } catch (error) {
       setError(error.message);
     }

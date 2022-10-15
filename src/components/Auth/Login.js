@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useForm, Controller } from "react-hook-form";
 
-import { Link as RouterLink } from "react-router-dom";
+import { Link as RouterLink, useNavigate } from "react-router-dom";
 
 import { useAuth } from "context/AuthProvider";
 import {
@@ -20,6 +20,7 @@ export const Login = () => {
   const { loginUser, currentUser } = useAuth();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   async function handleSubmitLoginForm(data) {
     try {
@@ -27,6 +28,7 @@ export const Login = () => {
       setLoading(true);
       await loginUser(data.email, data.password);
       reset();
+      navigate("/dashboard");
     } catch (error) {
       setError(error.message);
     }
