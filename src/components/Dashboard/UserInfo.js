@@ -19,6 +19,7 @@ export const UserInfo = () => {
         flexDirection: "column",
         alignItems: "end",
         marginBottom: "12px",
+        marginTop: "12px",
       }}
     >
       <Typography>{currentUser.email}</Typography>
