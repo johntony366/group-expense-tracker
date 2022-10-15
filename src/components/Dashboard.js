@@ -9,7 +9,9 @@ import { Box } from "@mui/system";
 
 export const Dashboard = () => {
   return (
-    <Box>
+    <Box className="dashboard" sx={{
+      width: "100%"
+    }}>
       <Header />
       <Balance />
       <IncomeExpenses />

@@ -41,11 +41,12 @@ export const AddTransactionForm = () => {
     <Box
       className="addTransaction"
       sx={{
-        width: "clamp(250px, 50%, 500px)",
-        marginTop: "24px",
+        width: "clamp(250px, 50%, 400px)",
         border: 1,
         borderColor: "grey.400",
         padding: "12px",
+        margin: "0 auto",
+        marginTop: "24px",
       }}
     >
       <Typography variant="h5" sx={{ marginBottom: "16px" }}>

@@ -40,7 +40,7 @@ export const HistoryItem = ({ itemName, amount, id }) => {
         display: "flex",
         gap: "8px",
         alignItems: "center",
-        width: "clamp(250px, 50%, 500px)",
+        width: "clamp(250px, 50%, 400px)",
         "&:hover": { "& .deleteIcon": { display: "block" } },
       }}
     >

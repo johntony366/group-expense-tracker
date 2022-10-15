@@ -21,7 +21,10 @@ export const IncomeExpenses = () => {
     <Box
       className="income-expenses"
       sx={{
+        width: "clamp(250px, 50%, 400px)",
+        margin: "0 auto",
         display: "flex",
+        justifyContent: "space-around",
         gap: "48px",
         p: "12px",
         backgroundColor: "common.white",

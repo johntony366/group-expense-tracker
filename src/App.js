@@ -25,7 +25,7 @@ function App() {
           justifyContent: "center",
           alignItems: "center",
           height: "100%",
-          width: "clamp(300px, 50%, 800px)",
+          width: "100%",
         }}
       >
         <BrowserRouter>
