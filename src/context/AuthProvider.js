@@ -2,6 +2,7 @@ import React, { createContext, useContext, useState, useEffect } from 'react'
 import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword } from 'firebase/auth';
 
 import { auth } from "../firebase-config"
+import { CircularProgress, LinearProgress } from '@mui/material';
 
 const AuthContext = createContext();
 
@@ -11,6 +12,7 @@ export function useAuth() {
 
 export const AuthProvider = ({children}) => {
   const [currentUser, setCurrentUser] = useState();
+  const [loadingCurrentUser, setLoadingCurrentUser] = useState(true);
 
   async function signupUser(email, password) {
     await createUserWithEmailAndPassword(auth, email, password);
@@ -23,6 +25,7 @@ export const AuthProvider = ({children}) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       setCurrentUser(user);
+      setLoadingCurrentUser(false);
     })
 
     return unsubscribe;
@@ -32,7 +35,7 @@ export const AuthProvider = ({children}) => {
   
   return (
     <AuthContext.Provider value={value}>
-      {children}
+      {loadingCurrentUser ? <CircularProgress /> : children}
     </AuthContext.Provider>
   )
 }

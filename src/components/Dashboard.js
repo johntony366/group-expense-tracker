@@ -7,12 +7,19 @@ import { History } from "components/Dashboard/History";
 import { AddTransactionForm } from "./Dashboard/AddTransaction";
 import { Box } from "@mui/system";
 import { UserInfo } from "./Dashboard/UserInfo";
+import { useAuth } from "context/AuthProvider";
+import { Navigate } from "react-router-dom";
 
 export const Dashboard = () => {
-  return (
-    <Box className="dashboard" sx={{
-      width: "clamp(300px, 70%, 800px)",
-    }}>
+  const { currentUser } = useAuth();
+
+  return currentUser ? (
+    <Box
+      className="dashboard"
+      sx={{
+        width: "clamp(300px, 70%, 800px)",
+      }}
+    >
       <UserInfo />
       <Header />
       <Balance />
@@ -20,5 +27,7 @@ export const Dashboard = () => {
       <AddTransactionForm />
       <History />
     </Box>
+  ) : (
+    <Navigate to="/login" />
   );
 };
