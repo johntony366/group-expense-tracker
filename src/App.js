@@ -10,6 +10,7 @@ import "./App.css";
 import { useEffect } from "react";
 import { Signup } from "./components/Auth/Signup";
 import { Dashboard } from "./components/Dashboard";
+import { Groups } from "./components/Groups";
 import { Login } from "components/Auth/Login";
 
 function App() {
@@ -32,8 +33,9 @@ function App() {
           <TransactionProvider>
             <AuthProvider>
               <Routes>
-                <Route path="/" element={<Navigate to="/dashboard"/>} />
+                <Route path="/" element={<Navigate to="/groups" />} />
                 <Route path="/signup" element={<Signup />} />
+                <Route path="/groups" element={<Groups />} />
                 <Route path="/dashboard" element={<Dashboard />} />
                 <Route path="/login" element={<Login />} />
               </Routes>

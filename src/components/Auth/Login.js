@@ -28,7 +28,7 @@ export const Login = () => {
       setLoading(true);
       await loginUser(data.email, data.password);
       reset();
-      navigate("/dashboard");
+      navigate("/groups");
     } catch (error) {
       setError(error.message);
     }
@@ -47,9 +47,12 @@ export const Login = () => {
         alignItems: "center",
       }}
     >
-      <Box className="loginForm" sx={{
-        width: "clamp(250px, 70%, 600px)"
-      }}>
+      <Box
+        className="loginForm"
+        sx={{
+          width: "clamp(250px, 70%, 600px)",
+        }}
+      >
         <Paper
           elevation={2}
           sx={{

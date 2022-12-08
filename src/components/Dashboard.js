@@ -12,7 +12,6 @@ import { Navigate } from "react-router-dom";
 
 export const Dashboard = () => {
   const { currentUser } = useAuth();
-
   return currentUser ? (
     <Box
       className="dashboard"
