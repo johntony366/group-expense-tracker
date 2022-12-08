@@ -3,26 +3,32 @@ import { createContext, useContext, useReducer } from "react";
 import React from "react";
 
 const TransactionsContext = createContext(null);
-const TransactionsDispatchContext = createContext(null);
+const initialState = [];
 
 export const TransactionProvider = ({ children }) => {
-  const [transactions, dispatch] = useReducer(transactionsReducer, []);
+  const [transactionsState, transactionsDispatch] = useReducer(
+    transactionsReducer,
+    initialState
+  );
 
   return (
-    <TransactionsContext.Provider value={transactions}>
-      <TransactionsDispatchContext.Provider value={dispatch}>
-        {children}
-      </TransactionsDispatchContext.Provider>
+    <TransactionsContext.Provider
+      value={{
+        transactionsState: transactionsState,
+        transactionsDispatch: transactionsDispatch,
+      }}
+    >
+      {children}
     </TransactionsContext.Provider>
   );
 };
 
-export function useTransactions() {
-  return useContext(TransactionsContext);
+export function useTransactionsState() {
+  return useContext(TransactionsContext).transactionsState;
 }
 
-export function useDispatch() {
-  return useContext(TransactionsDispatchContext);
+export function useTransactionsDispatch() {
+  return useContext(TransactionsContext).transactionsDispatch;
 }
 
 function transactionsReducer(oldTransactions, action) {

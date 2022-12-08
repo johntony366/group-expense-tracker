@@ -4,26 +4,32 @@ import { List } from "@mui/material";
 import { onSnapshot, collection, query, orderBy } from "firebase/firestore";
 
 import { HistoryItem } from "./HistoryItem";
-import { useDispatch, useTransactions } from "context/TransactionProvider";
+import {
+  useTransactionsDispatch,
+  useTransactionsState,
+} from "context/TransactionProvider";
 import { db } from "firebase-config";
 import { useAuth } from "context/AuthProvider";
 
 export const HistoryItems = () => {
-  const transactions = useTransactions();
-  const dispatch = useDispatch();
+  const transactions = useTransactionsState();
+  const dispatch = useTransactionsDispatch();
   const { currentUser } = useAuth();
 
   useEffect(() => {
     const unsub = onSnapshot(
-      query(collection(db, `users/${currentUser.uid}/transactions`), orderBy('timestamp', "desc")),
+      query(
+        collection(db, `users/${currentUser.uid}/transactions`),
+        orderBy("timestamp", "desc")
+      ),
       (querySnapshot) => {
         const transactions = querySnapshot.docs.map((doc) => doc.data());
-        dispatch({type: "got_transactions", transactions: transactions})
+        dispatch({ type: "got_transactions", transactions: transactions });
       }
     );
 
     return unsub;
-  }, [dispatch, currentUser.uid]);
+  }, []);
 
   return (
     <List

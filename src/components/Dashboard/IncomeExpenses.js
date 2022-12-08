@@ -1,14 +1,15 @@
 import React from "react";
 import { Box, Typography } from "@mui/material";
 
-import { useTransactions } from "../../context/TransactionProvider"
+import { useTransactionsState } from "../../context/TransactionProvider";
 
 export const IncomeExpenses = () => {
-  const transactions = useTransactions();
+  const transactions = useTransactionsState();
 
-  let income = 0, expense = 0;
-  transactions.forEach(transaction => {
-    const amount = Number(transaction.amount)
+  let income = 0,
+    expense = 0;
+  transactions.forEach((transaction) => {
+    const amount = Number(transaction.amount);
     if (amount >= 0) {
       income += amount;
     } else {
@@ -16,7 +17,6 @@ export const IncomeExpenses = () => {
     }
   });
 
-  
   return (
     <Box
       className="income-expenses"

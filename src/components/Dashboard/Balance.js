@@ -1,10 +1,10 @@
 import React from "react";
 import { Box, Typography } from "@mui/material";
 
-import { useTransactions } from "context/TransactionProvider";
+import { useTransactionsState } from "context/TransactionProvider";
 
 export const Balance = () => {
-  const transactions = useTransactions();
+  const transactions = useTransactionsState();
   const balance = transactions.reduce(
     (sum, transaction) => sum + Number(transaction.amount),
     0

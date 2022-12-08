@@ -2,6 +2,7 @@ import { Box } from "@mui/material";
 import { ThemeProvider } from "@mui/material";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
+import { GroupsProvider } from "context/GroupsProvider";
 import { TransactionProvider } from "./context/TransactionProvider";
 import { AuthProvider } from "./context/AuthProvider";
 
@@ -31,15 +32,20 @@ function App() {
       >
         <BrowserRouter>
           <TransactionProvider>
-            <AuthProvider>
-              <Routes>
-                <Route path="/" element={<Navigate to="/groups" />} />
-                <Route path="/signup" element={<Signup />} />
-                <Route path="/groups" element={<Groups />} />
-                <Route path="/dashboard" element={<Dashboard />} />
-                <Route path="/login" element={<Login />} />
-              </Routes>
-            </AuthProvider>
+            <GroupsProvider>
+              <AuthProvider>
+                <Routes>
+                  <Route path="/" element={<Navigate to="/groups" />} />
+                  <Route path="/signup" element={<Signup />} />
+                  <Route path="/groups" element={<Groups />} />
+                  <Route
+                    path="/dashboard/:selectedGroup"
+                    element={<Dashboard />}
+                  />
+                  <Route path="/login" element={<Login />} />
+                </Routes>
+              </AuthProvider>
+            </GroupsProvider>
           </TransactionProvider>
         </BrowserRouter>
       </Box>

@@ -8,10 +8,13 @@ import { AddTransactionForm } from "./Dashboard/AddTransaction";
 import { Box } from "@mui/system";
 import { UserInfo } from "./Dashboard/UserInfo";
 import { useAuth } from "context/AuthProvider";
-import { Navigate } from "react-router-dom";
+import { Navigate, useParams } from "react-router-dom";
 
 export const Dashboard = () => {
   const { currentUser } = useAuth();
+  const params = useParams();
+  const selectedGroup = params.selectedGroup;
+
   return currentUser ? (
     <Box
       className="dashboard"
