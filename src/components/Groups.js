@@ -55,7 +55,7 @@ export const Groups = () => {
                   fontSize: 20,
                 }}
                 onClick={() => {
-                  navigate(`/dashboard/${group}`);
+                  navigate(`/groups/${group}`);
                 }}
               >
                 {group}

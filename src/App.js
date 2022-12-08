@@ -13,6 +13,7 @@ import { Signup } from "./components/Auth/Signup";
 import { Dashboard } from "./components/Dashboard";
 import { Groups } from "./components/Groups";
 import { Login } from "components/Auth/Login";
+import GroupTracker from "components/GroupTracker";
 
 function App() {
   useEffect(() => {});
@@ -37,11 +38,12 @@ function App() {
                 <Routes>
                   <Route path="/" element={<Navigate to="/groups" />} />
                   <Route path="/signup" element={<Signup />} />
-                  <Route path="/groups" element={<Groups />} />
                   <Route
-                    path="/dashboard/:selectedGroup"
-                    element={<Dashboard />}
+                    path="/groups/:selectedGroup"
+                    element={<GroupTracker />}
                   />
+                  <Route path="/groups" element={<Groups />} />
+                  <Route path="/dashboard" element={<Dashboard />} />
                   <Route path="/login" element={<Login />} />
                 </Routes>
               </AuthProvider>
