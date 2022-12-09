@@ -13,10 +13,10 @@ import { collection, deleteDoc, getDocs } from "firebase/firestore";
 import { db } from "firebase-config";
 
 export const HistoryItem = ({ itemName, amount, id }) => {
-  const { currentUser } = useAuth();
+  const { currentUsername } = useAuth();
 
   async function deleteTransactionFromFirestore(id) {
-    const colRef = collection(db, `users/${currentUser.uid}/transactions`);
+    const colRef = collection(db, `users/${currentUsername}/transactions`);
     const querySnapshot = await getDocs(colRef);
 
     querySnapshot.forEach(async (doc) => {

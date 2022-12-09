@@ -8,7 +8,7 @@ import { db } from "firebase-config";
 
 export const AddTransactionForm = () => {
   const { handleSubmit, control, reset, setFocus } = useForm();
-  const { currentUser } = useAuth();
+  const { currentUsername } = useAuth();
 
   async function handleAddTransaction(data) {
     const roundedAmount = Math.round(data.amount * 100 + Number.EPSILON) / 100;
@@ -19,10 +19,9 @@ export const AddTransactionForm = () => {
   }
 
   async function addTransactionToFirestore(itemName, amount) {
-    const transactionRef = doc(collection(
-      db,
-      `users/${currentUser.uid}/transactions`
-    ));
+    const transactionRef = doc(
+      collection(db, `users/${currentUsername}/transactions`)
+    );
 
     await setDoc(transactionRef, {
       itemName: itemName,

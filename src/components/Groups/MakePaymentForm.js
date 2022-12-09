@@ -20,7 +20,7 @@ export const MakePaymentForm = () => {
 
   async function addTransactionToFirestore(itemName, amount) {
     const transactionRef = doc(
-      collection(db, `users/${currentUser.uid}/transactions`)
+      collection(db, `users/${currentUsername}/transactions`)
     );
 
     await setDoc(transactionRef, {
@@ -66,7 +66,7 @@ export const MakePaymentForm = () => {
                     step: "any",
                   }}
                   label={"Recipient"}
-                  placeholder={"Enter recipient..."}
+                  placeholder={"Enter email..."}
                   sx={{ width: "100%" }}
                   {...field}
                 />

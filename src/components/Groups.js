@@ -3,20 +3,14 @@ import React, { useEffect } from "react";
 import { useAuth } from "context/AuthProvider";
 import { Box } from "@mui/system";
 import { Navigate, useNavigate } from "react-router-dom";
-import { Link, Button, Stack, Typography } from "@mui/material";
+import { Button, Stack, Typography } from "@mui/material";
 import { useGroupsDispatch, useGroupsState } from "context/GroupsProvider";
-import {
-  collection,
-  doc,
-  onSnapshot,
-  orderBy,
-  query,
-} from "firebase/firestore";
+import { doc, onSnapshot } from "firebase/firestore";
 import { db } from "firebase-config";
-import Group from "./Groups/Group";
+import CreateGroup from "./Groups/CreateGroup";
 
 export const Groups = () => {
-  const { currentUser } = useAuth();
+  const { currentUser, currentUsername } = useAuth();
   const groups = useGroupsState();
   const dispatch = useGroupsDispatch();
 
@@ -24,15 +18,15 @@ export const Groups = () => {
 
   useEffect(() => {
     const unsub = onSnapshot(
-      doc(db, `users/${currentUser.uid}`),
+      doc(db, `users/${currentUsername}`),
       (querySnapshot) => {
-        const groups = querySnapshot.data();
-        dispatch({ type: "got_groups", groups: groups.groups });
+        const data = querySnapshot.data();
+        if (data) dispatch({ type: "got_groups", groups: data.groups });
       }
     );
 
     return unsub;
-  }, []);
+  }, [currentUsername, dispatch]);
 
   return currentUser ? (
     <Box
@@ -41,8 +35,19 @@ export const Groups = () => {
         width: "clamp(300px, 70%, 800px)",
       }}
     >
-      <Typography variant="h3">Groups</Typography>
-      <Stack>
+      <Typography variant="h3" my={2}>
+        Groups
+      </Typography>
+      <Stack spacing={2}>
+        <Button
+          variant="contained"
+          sx={{ textTransform: "unset" }}
+          color="success"
+          onClick={() => navigate("/dashboard")}
+        >
+          Dashboard
+        </Button>
+        <CreateGroup />
         {groups &&
           groups.map((group, i) => {
             return (

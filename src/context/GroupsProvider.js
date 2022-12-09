@@ -24,7 +24,7 @@ export function useGroupsDispatch() {
 function groupsReducer(oldGroups, action) {
   switch (action.type) {
     case "got_groups":
-      return [...action.groups];
+      return action.groups ? [...action.groups] : [];
     default:
       throw Error("Unknown action: " + action.type);
   }

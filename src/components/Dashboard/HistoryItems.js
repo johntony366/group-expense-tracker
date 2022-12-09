@@ -14,22 +14,23 @@ import { useAuth } from "context/AuthProvider";
 export const HistoryItems = () => {
   const transactions = useTransactionsState();
   const dispatch = useTransactionsDispatch();
-  const { currentUser } = useAuth();
+  const { currentUsername } = useAuth();
 
   useEffect(() => {
     const unsub = onSnapshot(
       query(
-        collection(db, `users/${currentUser.uid}/transactions`),
+        collection(db, `users/${currentUsername}/transactions`),
         orderBy("timestamp", "desc")
       ),
       (querySnapshot) => {
-        const transactions = querySnapshot.docs.map((doc) => doc.data());
+        const transactions =
+          querySnapshot && querySnapshot.docs.map((doc) => doc.data());
         dispatch({ type: "got_transactions", transactions: transactions });
       }
     );
 
     return unsub;
-  }, []);
+  }, [currentUsername, dispatch]);
 
   return (
     <List

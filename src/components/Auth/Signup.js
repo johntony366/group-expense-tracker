@@ -16,7 +16,7 @@ import { Link as RouterLink, useNavigate } from "react-router-dom";
 
 export const Signup = () => {
   const { handleSubmit, control, reset } = useForm();
-  const { signupUser, currentUser } = useAuth();
+  const { signupUser } = useAuth();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -38,7 +38,6 @@ export const Signup = () => {
     }
 
     setLoading(false);
-    console.log(currentUser);
   }
 
   return (

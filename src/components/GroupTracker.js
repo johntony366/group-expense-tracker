@@ -1,12 +1,8 @@
-import { Balance } from "components/Dashboard/Balance";
 import { Box } from "@mui/system";
 import { useAuth } from "context/AuthProvider";
 import React from "react";
 import { Navigate, useParams } from "react-router-dom";
-import { AddTransactionForm } from "./Dashboard/AddTransaction";
-import { Header } from "./Dashboard/Header";
 import { History } from "./Dashboard/History";
-import { IncomeExpenses } from "./Dashboard/IncomeExpenses";
 import { UserInfo } from "./Dashboard/UserInfo";
 import { GroupHeader } from "./Groups/GroupHeader";
 import { MakePaymentForm } from "./Groups/MakePaymentForm";
