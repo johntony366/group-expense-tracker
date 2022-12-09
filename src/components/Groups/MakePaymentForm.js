@@ -41,23 +41,50 @@ export const MakePaymentForm = ({ selectedGroup }) => {
     return unsub;
   }, []);
 
-  async function handleAddPayment(data) {
-    const roundedAmount = Math.round(data.amount * 100 + Number.EPSILON) / 100;
-    addTransactionToFirestore(data.itemName, roundedAmount);
+  async function handleAddPayment({ recipient, amount, itemName }) {
+    const roundedAmount = Math.round(amount * 100 + Number.EPSILON) / 100;
+    const id = await addTransactionToUsers(recipient, itemName, roundedAmount);
+    addTransactionToGroup(recipient, itemName, roundedAmount, id);
 
-    setFocus("itemName");
+    setFocus("recipient");
     reset();
   }
 
-  async function addTransactionToFirestore(itemName, amount) {
-    const transactionRef = doc(
+  async function addTransactionToUsers(recipient, itemName, amount) {
+    const fromRef = doc(
       collection(db, `users/${currentUsername}/transactions`)
     );
 
-    await setDoc(transactionRef, {
+    await setDoc(fromRef, {
+      itemName: itemName,
+      amount: -amount,
+      id: fromRef.id,
+      timestamp: serverTimestamp(),
+    });
+
+    const toRef = doc(collection(db, `users/${recipient}/transactions`));
+
+    await setDoc(toRef, {
       itemName: itemName,
       amount: amount,
-      id: transactionRef.id,
+      id: fromRef.id,
+      timestamp: serverTimestamp(),
+    });
+
+    return fromRef.id;
+  }
+
+  async function addTransactionToGroup(recipient, id, itemName, amount) {
+    const transactionRef = doc(
+      collection(db, `groups/${selectedGroup}/transactions`)
+    );
+
+    await setDoc(transactionRef, {
+      from: currentUsername,
+      to: recipient,
+      id: id,
+      itemName: itemName,
+      amount: amount,
       timestamp: serverTimestamp(),
     });
   }
@@ -102,7 +129,7 @@ export const MakePaymentForm = ({ selectedGroup }) => {
                   ))}
                 </Select>
               )}
-              name="Select"
+              name="recipient"
               control={control}
             />
           </section>
@@ -133,14 +160,14 @@ export const MakePaymentForm = ({ selectedGroup }) => {
                   <TextField
                     {...field}
                     inputRef={ref}
-                    label={"Description"}
-                    placeholder={"Enter description..."}
+                    label={"Item"}
+                    placeholder={"Enter item..."}
                     sx={{ width: "100%" }}
                   />
                 );
               }}
               rules={{ required: true }}
-              name="description"
+              name="itemName"
               control={control}
               defaultValue=""
             />
