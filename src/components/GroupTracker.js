@@ -26,7 +26,7 @@ export default function GroupTracker() {
       <AddMember selectedGroup={selectedGroup} />
       {/* <Balance /> */}
       {/* <IncomeExpenses /> */}
-      <MakePaymentForm />
+      <MakePaymentForm selectedGroup={selectedGroup} />
       <History />
     </Box>
   ) : (

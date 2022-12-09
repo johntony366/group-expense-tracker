@@ -1,14 +1,45 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useForm, Controller } from "react-hook-form";
-import { TextField, Box, Typography, Button } from "@mui/material";
+import {
+  TextField,
+  Box,
+  Typography,
+  Button,
+  Select,
+  MenuItem,
+  InputLabel,
+} from "@mui/material";
 
-import { setDoc, collection, serverTimestamp, doc } from "firebase/firestore";
+import {
+  setDoc,
+  collection,
+  serverTimestamp,
+  doc,
+  onSnapshot,
+} from "firebase/firestore";
 import { useAuth } from "context/AuthProvider";
 import { db } from "firebase-config";
 
-export const MakePaymentForm = () => {
+export const MakePaymentForm = ({ selectedGroup }) => {
   const { handleSubmit, control, reset, setFocus } = useForm();
   const { currentUsername } = useAuth();
+  const [recipients, setRecipients] = useState([]);
+
+  useEffect(() => {
+    const unsub = onSnapshot(
+      doc(db, `groups/${selectedGroup}`),
+      (querySnapshot) => {
+        const data = querySnapshot.data();
+        const members = data.members;
+        const recipientArray = members.filter(
+          (member) => member !== currentUsername
+        );
+        setRecipients(recipientArray);
+      }
+    );
+
+    return unsub;
+  }, []);
 
   async function handleAddPayment(data) {
     const roundedAmount = Math.round(data.amount * 100 + Number.EPSILON) / 100;
@@ -59,22 +90,20 @@ export const MakePaymentForm = () => {
           }}
         >
           <section>
+            <InputLabel>Recipient</InputLabel>
             <Controller
+              defaultValue={""}
               render={({ field }) => (
-                <TextField
-                  inputProps={{
-                    step: "any",
-                  }}
-                  label={"Recipient"}
-                  placeholder={"Enter email..."}
-                  sx={{ width: "100%" }}
-                  {...field}
-                />
+                <Select {...field} defaultValue="">
+                  {recipients.map((recipient, i) => (
+                    <MenuItem value={recipient} key={i}>
+                      {recipient}
+                    </MenuItem>
+                  ))}
+                </Select>
               )}
-              rules={{ required: true }}
-              name="recipient"
+              name="Select"
               control={control}
-              defaultValue=""
             />
           </section>
           <section>

@@ -12,7 +12,7 @@ function CreateGroup() {
   async function handleCreateGroup(data) {
     addGroupToFirestore(data.groupName);
 
-    setFocus("itemName");
+    setFocus("groupName");
     reset();
   }
 
