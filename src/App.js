@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 import { GroupsProvider } from "context/GroupsProvider";
 import { TransactionProvider } from "./context/TransactionProvider";
+import { GroupTransactionProvider } from "context/GroupTransactionProvider";
 import { AuthProvider } from "./context/AuthProvider";
 
 import { appTheme } from "./theme";
@@ -33,21 +34,23 @@ function App() {
       >
         <BrowserRouter>
           <TransactionProvider>
-            <GroupsProvider>
-              <AuthProvider>
-                <Routes>
-                  <Route path="/" element={<Navigate to="/dashboard" />} />
-                  <Route path="/signup" element={<Signup />} />
-                  <Route
-                    path="/groups/:selectedGroup"
-                    element={<GroupTracker />}
-                  />
-                  <Route path="/groups" element={<Groups />} />
-                  <Route path="/dashboard" element={<Dashboard />} />
-                  <Route path="/login" element={<Login />} />
-                </Routes>
-              </AuthProvider>
-            </GroupsProvider>
+            <GroupTransactionProvider>
+              <GroupsProvider>
+                <AuthProvider>
+                  <Routes>
+                    <Route path="/" element={<Navigate to="/dashboard" />} />
+                    <Route path="/signup" element={<Signup />} />
+                    <Route
+                      path="/groups/:selectedGroup"
+                      element={<GroupTracker />}
+                    />
+                    <Route path="/groups" element={<Groups />} />
+                    <Route path="/dashboard" element={<Dashboard />} />
+                    <Route path="/login" element={<Login />} />
+                  </Routes>
+                </AuthProvider>
+              </GroupsProvider>
+            </GroupTransactionProvider>
           </TransactionProvider>
         </BrowserRouter>
       </Box>

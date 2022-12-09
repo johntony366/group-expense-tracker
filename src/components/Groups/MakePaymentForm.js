@@ -41,7 +41,7 @@ export const MakePaymentForm = ({ selectedGroup }) => {
     return unsub;
   }, []);
 
-  async function handleAddPayment({ recipient, amount, itemName }) {
+  async function handleAddPayment({ recipient, itemName, amount }) {
     const roundedAmount = Math.round(amount * 100 + Number.EPSILON) / 100;
     const id = await addTransactionToUsers(recipient, itemName, roundedAmount);
     addTransactionToGroup(recipient, itemName, roundedAmount, id);
@@ -74,7 +74,7 @@ export const MakePaymentForm = ({ selectedGroup }) => {
     return fromRef.id;
   }
 
-  async function addTransactionToGroup(recipient, id, itemName, amount) {
+  async function addTransactionToGroup(recipient, itemName, amount, id) {
     const transactionRef = doc(
       collection(db, `groups/${selectedGroup}/transactions`)
     );
