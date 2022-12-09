@@ -17,6 +17,7 @@ export default function GroupTracker() {
       className="dashboard"
       sx={{
         width: "clamp(300px, 70%, 800px)",
+        height: "100vh",
       }}
     >
       <UserInfo />
