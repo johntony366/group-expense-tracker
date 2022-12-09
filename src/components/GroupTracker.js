@@ -4,6 +4,7 @@ import React from "react";
 import { Navigate, useParams } from "react-router-dom";
 import { History } from "./Dashboard/History";
 import { UserInfo } from "./Dashboard/UserInfo";
+import { AddMember } from "./Groups/AddMember";
 import { GroupHeader } from "./Groups/GroupHeader";
 import { MakePaymentForm } from "./Groups/MakePaymentForm";
 
@@ -22,6 +23,7 @@ export default function GroupTracker() {
     >
       <UserInfo />
       <GroupHeader selectedGroup={selectedGroup} />
+      <AddMember selectedGroup={selectedGroup} />
       {/* <Balance /> */}
       {/* <IncomeExpenses /> */}
       <MakePaymentForm />

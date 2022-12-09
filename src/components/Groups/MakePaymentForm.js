@@ -8,7 +8,7 @@ import { db } from "firebase-config";
 
 export const MakePaymentForm = () => {
   const { handleSubmit, control, reset, setFocus } = useForm();
-  const { currentUser } = useAuth();
+  const { currentUsername } = useAuth();
 
   async function handleAddPayment(data) {
     const roundedAmount = Math.round(data.amount * 100 + Number.EPSILON) / 100;
@@ -33,7 +33,7 @@ export const MakePaymentForm = () => {
 
   return (
     <Box
-      className="addTransaction"
+      className="makePayment"
       sx={{
         width: "clamp(250px, 50%, 400px)",
         border: 1,
