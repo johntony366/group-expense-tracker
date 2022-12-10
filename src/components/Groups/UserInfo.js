@@ -23,7 +23,7 @@ export const UserInfo = () => {
       }}
     >
       <Typography>{currentUser.email}</Typography>
-      <Stack direction={"row"} spacing={1}>
+      <Stack direction={"row"} spacing={1} fontSize="18px">
         <Link component={RouterLink} to="/dashboard">
           Dashboard
         </Link>

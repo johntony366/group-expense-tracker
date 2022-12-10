@@ -2,7 +2,7 @@ import React from "react";
 import { useForm, Controller } from "react-hook-form";
 import { useAuth } from "context/AuthProvider";
 import { db } from "firebase-config";
-import { arrayUnion, doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
+import { arrayUnion, doc, setDoc } from "firebase/firestore";
 import { Button, Grid, TextField } from "@mui/material";
 
 function CreateGroup() {
@@ -61,6 +61,8 @@ function CreateGroup() {
                   placeholder={"Enter group name..."}
                   sx={{ width: "100%" }}
                   size="small"
+                  required
+                  InputLabelProps={{ required: false }}
                 />
               );
             }}

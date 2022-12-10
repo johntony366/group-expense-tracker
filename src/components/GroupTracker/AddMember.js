@@ -1,13 +1,11 @@
 import React from "react";
 import { useForm, Controller } from "react-hook-form";
-import { useAuth } from "context/AuthProvider";
 import { db } from "firebase-config";
-import { arrayUnion, doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
+import { arrayUnion, doc, setDoc } from "firebase/firestore";
 import { Box, Button, Grid, TextField } from "@mui/material";
 
 function AddMember({ selectedGroup }) {
   const { handleSubmit, control, reset, setFocus } = useForm();
-  const { currentUsername } = useAuth();
 
   async function handleAddMember(data) {
     const memberUsername = data.memberEmail.split("@")[0];
@@ -63,6 +61,8 @@ function AddMember({ selectedGroup }) {
                     placeholder={"Enter member email..."}
                     sx={{ width: "100%" }}
                     size="small"
+                    required
+                    InputLabelProps={{ required: false }}
                   />
                 );
               }}

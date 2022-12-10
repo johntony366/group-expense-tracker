@@ -4,7 +4,7 @@ import { Link as RouterLink } from "react-router-dom";
 import { auth, db } from "firebase-config";
 import { useAuth } from "context/AuthProvider";
 import { signOut } from "firebase/auth";
-import { deleteDoc, doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
+import { deleteDoc, doc, getDoc, updateDoc } from "firebase/firestore";
 
 export const GroupUserInfo = ({ selectedGroup }) => {
   const { currentUser, currentUsername } = useAuth();

@@ -39,7 +39,7 @@ export const MakePaymentForm = ({ selectedGroup }) => {
     );
 
     return unsub;
-  }, []);
+  }, [currentUsername, selectedGroup]);
 
   async function handleAddPayment({ recipient, itemName, amount }) {
     const roundedAmount = Math.round(amount * 100 + Number.EPSILON) / 100;
@@ -121,7 +121,7 @@ export const MakePaymentForm = ({ selectedGroup }) => {
             <Controller
               defaultValue={""}
               render={({ field }) => (
-                <Select {...field} defaultValue="">
+                <Select {...field} defaultValue="" required>
                   {recipients.map((recipient, i) => (
                     <MenuItem value={recipient} key={i}>
                       {recipient}
@@ -144,6 +144,8 @@ export const MakePaymentForm = ({ selectedGroup }) => {
                   label={"Amount"}
                   placeholder={"Enter amount..."}
                   sx={{ width: "100%" }}
+                  required
+                  InputLabelProps={{ required: false }}
                   {...field}
                 />
               )}
@@ -163,6 +165,8 @@ export const MakePaymentForm = ({ selectedGroup }) => {
                     label={"Item"}
                     placeholder={"Enter item..."}
                     sx={{ width: "100%" }}
+                    required
+                    InputLabelProps={{ required: false }}
                   />
                 );
               }}

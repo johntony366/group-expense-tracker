@@ -2,7 +2,6 @@ import { Box } from "@mui/system";
 import { useAuth } from "context/AuthProvider";
 import React from "react";
 import { Navigate, useParams } from "react-router-dom";
-import { UserInfo } from "./Dashboard/UserInfo";
 import { GroupHistory } from "./GroupTracker/GroupHistory";
 import { AddMember } from "./GroupTracker/AddMember";
 import { GroupHeader } from "./GroupTracker/GroupHeader";
