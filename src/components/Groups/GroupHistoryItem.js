@@ -38,9 +38,36 @@ export const GroupHistoryItem = ({
     deleteTransactionFromGroup(id);
   }
 
-  async function deleteTransactionFromUsers(id) {}
+  async function deleteTransactionFromUsers(id) {
+    let colRef = collection(db, `users/${from}/transactions`);
+    let querySnapshot = await getDocs(colRef);
 
-  async function deleteTransactionFromGroup(id) {}
+    querySnapshot.forEach(async (doc) => {
+      if (doc.data().id === id) {
+        deleteDoc(doc.ref);
+      }
+    });
+
+    colRef = collection(db, `users/${to}/transactions`);
+    querySnapshot = await getDocs(colRef);
+
+    querySnapshot.forEach(async (doc) => {
+      if (doc.data().id === id) {
+        deleteDoc(doc.ref);
+      }
+    });
+  }
+
+  async function deleteTransactionFromGroup(id) {
+    const colRef = collection(db, `groups/${selectedGroup}/transactions`);
+    const querySnapshot = await getDocs(colRef);
+
+    querySnapshot.forEach(async (doc) => {
+      if (doc.data().id === id) {
+        deleteDoc(doc.ref);
+      }
+    });
+  }
 
   return (
     <Box
