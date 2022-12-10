@@ -49,7 +49,7 @@ function CreateGroup() {
       onSubmit={handleSubmit((data) => handleCreateGroup(data))}
       style={{ width: "100%" }}
     >
-      <Grid container>
+      <Grid container direction="row" spacing={1}>
         <Grid item xs={8}>
           <Controller
             render={({ field: { ref, ...field } }) => {
@@ -60,6 +60,7 @@ function CreateGroup() {
                   label={"Group name"}
                   placeholder={"Enter group name..."}
                   sx={{ width: "100%" }}
+                  size="small"
                 />
               );
             }}
@@ -69,21 +70,17 @@ function CreateGroup() {
             defaultValue=""
           />
         </Grid>
-        <Grid
-          item
-          xs={4}
-          display="flex"
-          alignItems="center"
-          justifyContent="center"
-        >
+        <Grid item xs={4} display="flex" justifyContent="flex-end">
           <Button
             variant="contained"
             type="submit"
             sx={{
               backgroundColor: "primary.main",
+              textTransform: "unset",
+              width: "50%",
             }}
           >
-            Create Group
+            Create
           </Button>
         </Grid>
       </Grid>

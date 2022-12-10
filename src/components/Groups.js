@@ -8,6 +8,7 @@ import { useGroupsDispatch, useGroupsState } from "context/GroupsProvider";
 import { doc, onSnapshot } from "firebase/firestore";
 import { db } from "firebase-config";
 import CreateGroup from "./Groups/CreateGroup";
+import { UserInfo } from "./Groups/UserInfo";
 
 export const Groups = () => {
   const { currentUser, currentUsername } = useAuth();
@@ -32,21 +33,15 @@ export const Groups = () => {
     <Box
       className="dashboard"
       sx={{
-        width: "clamp(300px, 70%, 800px)",
+        width: "clamp(300px, 70%, 500px)",
+        height: "100vh",
       }}
     >
+      <UserInfo />
       <Typography variant="h3" my={2}>
         Groups
       </Typography>
       <Stack spacing={2}>
-        <Button
-          variant="contained"
-          sx={{ textTransform: "unset" }}
-          color="success"
-          onClick={() => navigate("/dashboard")}
-        >
-          Dashboard
-        </Button>
         <CreateGroup />
         {groups &&
           groups.map((group, i) => {

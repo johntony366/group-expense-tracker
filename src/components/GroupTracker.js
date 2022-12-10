@@ -3,11 +3,11 @@ import { useAuth } from "context/AuthProvider";
 import React from "react";
 import { Navigate, useParams } from "react-router-dom";
 import { UserInfo } from "./Dashboard/UserInfo";
-import { GroupHistory } from "./Groups/GroupHistory";
-import { AddMember } from "./Groups/AddMember";
-import { GroupHeader } from "./Groups/GroupHeader";
-import { MakePaymentForm } from "./Groups/MakePaymentForm";
-import { GroupUserInfo } from "./Groups/GroupUserInfo";
+import { GroupHistory } from "./GroupTracker/GroupHistory";
+import { AddMember } from "./GroupTracker/AddMember";
+import { GroupHeader } from "./GroupTracker/GroupHeader";
+import { MakePaymentForm } from "./GroupTracker/MakePaymentForm";
+import { GroupUserInfo } from "./GroupTracker/GroupUserInfo";
 
 export default function GroupTracker() {
   const { currentUser } = useAuth();
@@ -22,7 +22,7 @@ export default function GroupTracker() {
         height: "100vh",
       }}
     >
-      <GroupUserInfo />
+      <GroupUserInfo selectedGroup={selectedGroup} />
       <GroupHeader selectedGroup={selectedGroup} />
       <AddMember selectedGroup={selectedGroup} />
       <MakePaymentForm selectedGroup={selectedGroup} />
