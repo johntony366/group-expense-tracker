@@ -54,7 +54,10 @@ export const GroupUserInfo = ({ selectedGroup }) => {
       }}
     >
       <Typography>{currentUser.email}</Typography>
-      <Stack direction={"row"} spacing={1}>
+      <Stack direction={"row"} spacing={1} fontSize="18px">
+        <Link component={RouterLink} to="/groups">
+          Groups
+        </Link>
         <Link component={RouterLink} to="/dashboard">
           Dashboard
         </Link>
