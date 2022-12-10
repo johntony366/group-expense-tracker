@@ -38,7 +38,7 @@ function App() {
               <GroupsProvider>
                 <AuthProvider>
                   <Routes>
-                    <Route path="/" element={<Navigate to="/dashboard" />} />
+                    <Route path="/" element={<Navigate to="/groups" />} />
                     <Route path="/signup" element={<Signup />} />
                     <Route
                       path="/groups/:selectedGroup"
