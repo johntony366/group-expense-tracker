@@ -50,7 +50,7 @@ function AddMember({ selectedGroup }) {
         marginBottom: "24px",
       }}
     >
-      <Box width="70%">
+      <Box width="clamp(250px, 50%, 400px)">
         <Grid container spacing={0}>
           <Grid item xs={8}>
             <Controller
@@ -61,7 +61,8 @@ function AddMember({ selectedGroup }) {
                     inputRef={ref}
                     label={"Add member"}
                     placeholder={"Enter member email..."}
-                    sx={{ width: "100%", fontSize: "12px" }}
+                    sx={{ width: "100%" }}
+                    size="small"
                   />
                 );
               }}
@@ -76,7 +77,7 @@ function AddMember({ selectedGroup }) {
             xs={4}
             display="flex"
             alignItems="center"
-            justifyContent="center"
+            justifyContent="flex-end"
           >
             <Button
               variant="contained"

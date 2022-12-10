@@ -49,7 +49,7 @@ export const GroupUserInfo = ({ selectedGroup }) => {
         display: "flex",
         flexDirection: "column",
         alignItems: "end",
-        marginBottom: "12px",
+        marginBottom: "32px",
         marginTop: "12px",
       }}
     >

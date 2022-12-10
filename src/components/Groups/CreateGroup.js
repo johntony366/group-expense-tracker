@@ -70,7 +70,13 @@ function CreateGroup() {
             defaultValue=""
           />
         </Grid>
-        <Grid item xs={4} display="flex" justifyContent="flex-end">
+        <Grid
+          item
+          xs={4}
+          display="flex"
+          justifyContent="flex-end"
+          alignItems="center"
+        >
           <Button
             variant="contained"
             type="submit"
