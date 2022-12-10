@@ -13,6 +13,8 @@ import { Box } from "@mui/system";
 
 import { useAuth } from "../../context/AuthProvider";
 import { Link as RouterLink, useNavigate } from "react-router-dom";
+import { setDoc, doc } from "firebase/firestore";
+import { db } from "../../firebase-config";
 
 export const Signup = () => {
   const { handleSubmit, control, reset } = useForm();
@@ -31,6 +33,7 @@ export const Signup = () => {
       setError("");
       setLoading(true);
       await signupUser(data.email, data.password);
+      await setDoc(doc(db, `/users/${data.email.split("@")[0]}`), {});
       reset();
       navigate("/dashboard");
     } catch (error) {

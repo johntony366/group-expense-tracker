@@ -1,19 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { db } from "../../firebase-config";
-import { arrayUnion, doc, setDoc } from "firebase/firestore";
-import { Box, Button, Grid, TextField } from "@mui/material";
+import { arrayUnion, doc, getDoc, setDoc } from "firebase/firestore";
+import { Alert, Box, Button, Grid, TextField } from "@mui/material";
 
 function AddMember({ selectedGroup }) {
   const { handleSubmit, control, reset, setFocus } = useForm();
+  const [error, setError] = useState("");
 
   async function handleAddMember(data) {
     const memberUsername = data.memberEmail.split("@")[0];
-    addGroupToMembersGroups(memberUsername);
-    addMemberToGroup(memberUsername);
 
-    setFocus("memberEmail");
-    reset();
+    const member = await getDoc(doc(db, `/users/${memberUsername}`));
+    if (!member.exists()) {
+      setError("User does not exist!");
+    } else {
+      setError("");
+      addGroupToMembersGroups(memberUsername);
+      addMemberToGroup(memberUsername);
+
+      setFocus("memberEmail");
+      reset();
+    }
   }
 
   async function addGroupToMembersGroups(memberUsername) {
@@ -50,6 +58,13 @@ function AddMember({ selectedGroup }) {
     >
       <Box width="clamp(250px, 50%, 400px)">
         <Grid container spacing={0}>
+          <Grid item xs={12}>
+            {error && (
+              <Alert severity="error" sx={{ marginBottom: "24px" }}>
+                {error}
+              </Alert>
+            )}
+          </Grid>
           <Grid item xs={8}>
             <Controller
               render={({ field: { ref, ...field } }) => {
@@ -60,6 +75,7 @@ function AddMember({ selectedGroup }) {
                     label={"Add member"}
                     placeholder={"Enter member email..."}
                     sx={{ width: "100%" }}
+                    type="email"
                     size="small"
                     required
                     InputLabelProps={{ required: false }}

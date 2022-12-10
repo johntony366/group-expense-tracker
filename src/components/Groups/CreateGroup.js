@@ -1,19 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { useAuth } from "../../context/AuthProvider";
 import { db } from "../../firebase-config";
-import { arrayUnion, doc, setDoc } from "firebase/firestore";
-import { Button, Grid, TextField } from "@mui/material";
+import { arrayUnion, doc, getDoc, setDoc } from "firebase/firestore";
+import { Alert, Button, Grid, TextField } from "@mui/material";
 
 function CreateGroup() {
+  const [error, setError] = useState("");
   const { handleSubmit, control, reset, setFocus } = useForm();
   const { currentUsername } = useAuth();
 
   async function handleCreateGroup(data) {
-    addGroupToFirestore(data.groupName);
+    const group = await getDoc(doc(db, `/groups/${data.groupName}`));
 
-    setFocus("groupName");
-    reset();
+    if (group.exists()) {
+      setError(
+        "A group with this name already exists. Please choose another name."
+      );
+    } else {
+      setError("");
+      addGroupToFirestore(data.groupName);
+      setFocus("groupName");
+      reset();
+    }
   }
 
   async function addGroupToFirestore(newGroupName) {
@@ -50,6 +59,13 @@ function CreateGroup() {
       style={{ width: "100%" }}
     >
       <Grid container direction="row" spacing={1}>
+        <Grid item xs={12}>
+          {error && (
+            <Alert severity="error" sx={{ marginBottom: "24px" }}>
+              {error}
+            </Alert>
+          )}
+        </Grid>
         <Grid item xs={8}>
           <Controller
             render={({ field: { ref, ...field } }) => {
@@ -62,6 +78,7 @@ function CreateGroup() {
                   sx={{ width: "100%" }}
                   size="small"
                   required
+                  inputProps={{ minLength: 3, maxLength: 30 }}
                   InputLabelProps={{ required: false }}
                 />
               );

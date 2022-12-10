@@ -166,7 +166,11 @@ export const MakePaymentForm = ({ selectedGroup }) => {
                     placeholder={"Enter item..."}
                     sx={{ width: "100%" }}
                     required
-                    InputLabelProps={{ required: false }}
+                    InputLabelProps={{
+                      required: false,
+                      minLength: 1,
+                      maxLength: 30,
+                    }}
                   />
                 );
               }}
