@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Typography } from "@mui/material";
 
-import { useTransactionsState } from "context/TransactionProvider";
+import { useTransactionsState } from "../../context/TransactionProvider";
 
 export const Balance = () => {
   const transactions = useTransactionsState();

@@ -17,8 +17,8 @@ import {
   doc,
   onSnapshot,
 } from "firebase/firestore";
-import { useAuth } from "context/AuthProvider";
-import { db } from "firebase-config";
+import { useAuth } from "../../context/AuthProvider";
+import { db } from "../../firebase-config";
 
 export const MakePaymentForm = ({ selectedGroup }) => {
   const { handleSubmit, control, reset, setFocus } = useForm();

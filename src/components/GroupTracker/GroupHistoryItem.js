@@ -8,9 +8,8 @@ import {
 } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 
-import { useAuth } from "context/AuthProvider";
 import { collection, deleteDoc, getDocs } from "firebase/firestore";
-import { db } from "firebase-config";
+import { db } from "../../firebase-config";
 
 export const GroupHistoryItem = ({
   itemName,
@@ -20,19 +19,6 @@ export const GroupHistoryItem = ({
   from,
   to,
 }) => {
-  const { currentUsername } = useAuth();
-
-  // async function deleteTransactionFromFirestore(id) {
-  //   const colRef = collection(db, `users/${currentUsername}/transactions`);
-  //   const querySnapshot = await getDocs(colRef);
-
-  //   querySnapshot.forEach(async (doc) => {
-  //     if (doc.id === id) {
-  //       deleteDoc(doc.ref);
-  //     }
-  //   });
-  // }
-
   function handleDelete() {
     deleteTransactionFromUsers(id);
     deleteTransactionFromGroup(id);

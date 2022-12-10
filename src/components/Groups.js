@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
 
-import { useAuth } from "context/AuthProvider";
+import { useAuth } from "../context/AuthProvider";
 import { Box } from "@mui/system";
 import { Navigate, useNavigate } from "react-router-dom";
 import { Button, Stack, Typography } from "@mui/material";
-import { useGroupsDispatch, useGroupsState } from "context/GroupsProvider";
+import { useGroupsDispatch, useGroupsState } from "../context/GroupsProvider";
 import { doc, onSnapshot } from "firebase/firestore";
-import { db } from "firebase-config";
+import { db } from "../firebase-config";
 import CreateGroup from "./Groups/CreateGroup";
 import { UserInfo } from "./Groups/UserInfo";
 

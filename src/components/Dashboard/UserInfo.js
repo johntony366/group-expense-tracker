@@ -1,8 +1,8 @@
 import React from "react";
 import { Box, Link, Stack, Typography } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
-import { auth } from "firebase-config";
-import { useAuth } from "context/AuthProvider";
+import { auth } from "../../firebase-config";
+import { useAuth } from "../../context/AuthProvider";
 import { signOut } from "firebase/auth";
 
 export const UserInfo = () => {

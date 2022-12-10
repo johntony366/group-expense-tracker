@@ -8,9 +8,9 @@ import {
 } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 
-import { useAuth } from "context/AuthProvider";
+import { useAuth } from "../../context/AuthProvider";
 import { collection, deleteDoc, getDocs } from "firebase/firestore";
-import { db } from "firebase-config";
+import { db } from "../../firebase-config";
 
 export const HistoryItem = ({ itemName, amount, id }) => {
   const { currentUsername } = useAuth();

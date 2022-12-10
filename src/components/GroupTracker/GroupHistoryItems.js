@@ -7,9 +7,9 @@ import { GroupHistoryItem } from "./GroupHistoryItem";
 import {
   useGroupTransactionsDispatch,
   useGroupTransactionsState,
-} from "context/GroupTransactionProvider";
-import { db } from "firebase-config";
-import { useAuth } from "context/AuthProvider";
+} from "../../context/GroupTransactionProvider";
+import { db } from "../../firebase-config";
+import { useAuth } from "../../context/AuthProvider";
 
 export const GroupHistoryItems = ({ selectedGroup }) => {
   const transactions = useGroupTransactionsState();
@@ -30,7 +30,7 @@ export const GroupHistoryItems = ({ selectedGroup }) => {
     );
 
     return unsub;
-  }, [currentUsername, dispatch]);
+  }, [currentUsername, dispatch, selectedGroup]);
 
   return (
     <List

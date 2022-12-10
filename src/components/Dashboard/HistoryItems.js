@@ -7,9 +7,9 @@ import { HistoryItem } from "./HistoryItem";
 import {
   useTransactionsDispatch,
   useTransactionsState,
-} from "context/TransactionProvider";
-import { db } from "firebase-config";
-import { useAuth } from "context/AuthProvider";
+} from "../../context/TransactionProvider";
+import { db } from "../../firebase-config";
+import { useAuth } from "../../context/AuthProvider";
 
 export const HistoryItems = () => {
   const transactions = useTransactionsState();

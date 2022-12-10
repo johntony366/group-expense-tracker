@@ -3,7 +3,7 @@ import { useForm, Controller } from "react-hook-form";
 
 import { Link as RouterLink, useNavigate } from "react-router-dom";
 
-import { useAuth } from "context/AuthProvider";
+import { useAuth } from "../../context/AuthProvider";
 import {
   Box,
   Button,

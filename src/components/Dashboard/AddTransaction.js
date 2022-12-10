@@ -3,8 +3,8 @@ import { useForm, Controller } from "react-hook-form";
 import { TextField, Box, Typography, Button } from "@mui/material";
 
 import { setDoc, collection, serverTimestamp, doc } from "firebase/firestore";
-import { useAuth } from "context/AuthProvider";
-import { db } from "firebase-config";
+import { useAuth } from "../../context/AuthProvider";
+import { db } from "../../firebase-config";
 
 export const AddTransactionForm = () => {
   const { handleSubmit, control, reset, setFocus } = useForm();

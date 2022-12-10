@@ -1,5 +1,5 @@
 import { Box } from "@mui/system";
-import { useAuth } from "context/AuthProvider";
+import { useAuth } from "../context/AuthProvider";
 import React from "react";
 import { Navigate, useParams } from "react-router-dom";
 import { GroupHistory } from "./GroupTracker/GroupHistory";

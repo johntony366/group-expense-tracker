@@ -1,13 +1,13 @@
 import React from "react";
 
 import { Header } from "./Dashboard/Header";
-import { Balance } from "components/Dashboard/Balance";
+import { Balance } from "./Dashboard/Balance";
 import { IncomeExpenses } from "./Dashboard/IncomeExpenses";
-import { History } from "components/Dashboard/History";
+import { History } from "./Dashboard/History";
 import { AddTransactionForm } from "./Dashboard/AddTransaction";
 import { Box } from "@mui/system";
 import { UserInfo } from "./Dashboard/UserInfo";
-import { useAuth } from "context/AuthProvider";
+import { useAuth } from "../context/AuthProvider";
 import { Navigate } from "react-router-dom";
 
 export const Dashboard = () => {

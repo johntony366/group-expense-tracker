@@ -1,6 +1,6 @@
 import React from "react";
 import { useForm, Controller } from "react-hook-form";
-import { db } from "firebase-config";
+import { db } from "../../firebase-config";
 import { arrayUnion, doc, setDoc } from "firebase/firestore";
 import { Box, Button, Grid, TextField } from "@mui/material";
 
