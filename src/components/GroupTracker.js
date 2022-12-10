@@ -7,6 +7,7 @@ import { GroupHistory } from "./Groups/GroupHistory";
 import { AddMember } from "./Groups/AddMember";
 import { GroupHeader } from "./Groups/GroupHeader";
 import { MakePaymentForm } from "./Groups/MakePaymentForm";
+import { GroupUserInfo } from "./Groups/GroupUserInfo";
 
 export default function GroupTracker() {
   const { currentUser } = useAuth();
@@ -21,7 +22,7 @@ export default function GroupTracker() {
         height: "100vh",
       }}
     >
-      <UserInfo />
+      <GroupUserInfo />
       <GroupHeader selectedGroup={selectedGroup} />
       <AddMember selectedGroup={selectedGroup} />
       <MakePaymentForm selectedGroup={selectedGroup} />

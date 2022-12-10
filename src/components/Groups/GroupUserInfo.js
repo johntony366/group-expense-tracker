@@ -5,7 +5,7 @@ import { auth } from "firebase-config";
 import { useAuth } from "context/AuthProvider";
 import { signOut } from "firebase/auth";
 
-export const UserInfo = () => {
+export const GroupUserInfo = () => {
   const { currentUser } = useAuth();
 
   async function handleLogout() {
@@ -24,8 +24,8 @@ export const UserInfo = () => {
     >
       <Typography>{currentUser.email}</Typography>
       <Stack direction={"row"} spacing={1}>
-        <Link component={RouterLink} to="/groups">
-          Groups
+        <Link component={RouterLink} to="/dashboard">
+          Dashboard
         </Link>
         <Link onClick={handleLogout} component={RouterLink} to="/login">
           Logout
