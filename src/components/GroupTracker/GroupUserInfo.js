@@ -7,25 +7,40 @@ import { signOut } from "firebase/auth";
 import { deleteDoc, doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
 
 export const GroupUserInfo = ({ selectedGroup }) => {
-  const { currentUser } = useAuth();
+  const { currentUser, currentUsername } = useAuth();
 
   async function handleLogout() {
     await signOut(auth);
   }
 
   async function handleLeaveGroup() {
+    removeUserFromGroup();
+    removeGroupFromUser();
+  }
+
+  async function removeUserFromGroup() {
     const docRef = doc(db, `/groups/${selectedGroup}`);
     const result = await getDoc(docRef);
     const data = result.data();
-    const members = data.members;
+    let members = data.members;
     if (members.length === 1) {
       deleteDoc(docRef);
     } else {
-      members.filter((member) => member !== currentUser);
-      if (data.owner === currentUser)
+      members = members.filter((member) => member !== currentUsername);
+      if (data.owner === currentUsername)
         updateDoc(docRef, { members: members, owner: members[0] });
       else updateDoc(docRef, { members: members });
     }
+  }
+
+  async function removeGroupFromUser() {
+    // debugger;
+    const docRef = doc(db, `/users/${currentUsername}`);
+    const result = await getDoc(docRef);
+    const data = result.data();
+    let groups = data.groups;
+    groups = groups.filter((group) => group !== selectedGroup);
+    updateDoc(docRef, { groups: groups });
   }
 
   return (
