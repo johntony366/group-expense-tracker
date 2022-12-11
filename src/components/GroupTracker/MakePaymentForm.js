@@ -56,6 +56,8 @@ export const MakePaymentForm = ({ selectedGroup }) => {
     );
 
     await setDoc(fromRef, {
+      from: currentUsername,
+      to: recipient,
       itemName: itemName,
       amount: -amount,
       id: fromRef.id,
@@ -65,6 +67,8 @@ export const MakePaymentForm = ({ selectedGroup }) => {
     const toRef = doc(collection(db, `users/${recipient}/transactions`));
 
     await setDoc(toRef, {
+      from: currentUsername,
+      to: recipient,
       itemName: itemName,
       amount: amount,
       id: fromRef.id,

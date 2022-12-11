@@ -5,7 +5,6 @@ import {
   ListItem,
   ListItemText,
   IconButton,
-  Stack,
   Alert,
   Collapse,
 } from "@mui/material";
@@ -69,7 +68,7 @@ export const GroupHistoryItem = ({
   const [error, setError] = useState("");
 
   return (
-    <Stack spacing={0}>
+    <>
       {error && (
         <Collapse in={error ? true : false}>
           <Alert
@@ -136,6 +135,6 @@ export const GroupHistoryItem = ({
           <DeleteIcon />
         </IconButton>
       </Box>
-    </Stack>
+    </>
   );
 };
