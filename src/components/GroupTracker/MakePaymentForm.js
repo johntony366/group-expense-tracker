@@ -140,6 +140,8 @@ export const MakePaymentForm = ({ selectedGroup }) => {
                   type="number"
                   inputProps={{
                     step: "any",
+                    min: 0,
+                    max: 9999999,
                   }}
                   label={"Amount"}
                   placeholder={"Enter amount..."}
