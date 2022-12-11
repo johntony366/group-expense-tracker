@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect } from "react";
-import { List } from "@mui/material";
+import { List, Typography } from "@mui/material";
 import { onSnapshot, collection, query, orderBy } from "firebase/firestore";
 
 import { GroupHistoryItem } from "./GroupHistoryItem";
@@ -36,19 +36,23 @@ export const GroupHistoryItems = ({ selectedGroup }) => {
     <List
       sx={{ display: "flex", flexDirection: "column", alignItems: "center  " }}
     >
-      {transactions.map((transaction, i) => {
-        return (
-          <GroupHistoryItem
-            itemName={transaction.itemName}
-            amount={transaction.amount}
-            id={transaction.id}
-            key={i}
-            selectedGroup={selectedGroup}
-            from={transaction.from}
-            to={transaction.to}
-          />
-        );
-      })}
+      {transactions.length > 0 ? (
+        transactions.map((transaction, i) => {
+          return (
+            <GroupHistoryItem
+              itemName={transaction.itemName}
+              amount={transaction.amount}
+              id={transaction.id}
+              key={i}
+              selectedGroup={selectedGroup}
+              from={transaction.from}
+              to={transaction.to}
+            />
+          );
+        })
+      ) : (
+        <Typography>No transactions found</Typography>
+      )}
     </List>
   );
 };

@@ -43,7 +43,7 @@ export const Groups = () => {
       </Typography>
       <Stack spacing={2}>
         <CreateGroup />
-        {groups &&
+        {groups && groups.length > 0 ? (
           groups.map((group, i) => {
             return (
               <Button
@@ -61,7 +61,10 @@ export const Groups = () => {
                 {group}
               </Button>
             );
-          })}
+          })
+        ) : (
+          <Typography>No groups found</Typography>
+        )}
       </Stack>
     </Box>
   ) : (

@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect } from "react";
-import { List } from "@mui/material";
+import { List, Typography } from "@mui/material";
 import { onSnapshot, collection, query, orderBy } from "firebase/firestore";
 
 import { HistoryItem } from "./HistoryItem";
@@ -36,16 +36,20 @@ export const HistoryItems = () => {
     <List
       sx={{ display: "flex", flexDirection: "column", alignItems: "center  " }}
     >
-      {transactions.map((transaction, i) => {
-        return (
-          <HistoryItem
-            itemName={transaction.itemName}
-            amount={transaction.amount}
-            id={transaction.id}
-            key={i}
-          />
-        );
-      })}
+      {transactions.length > 0 ? (
+        transactions.map((transaction, i) => {
+          return (
+            <HistoryItem
+              itemName={transaction.itemName}
+              amount={transaction.amount}
+              id={transaction.id}
+              key={i}
+            />
+          );
+        })
+      ) : (
+        <Typography>No transactions found</Typography>
+      )}
     </List>
   );
 };
