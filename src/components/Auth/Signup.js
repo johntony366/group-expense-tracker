@@ -35,7 +35,7 @@ export const Signup = () => {
       await signupUser(data.email, data.password);
       await setDoc(doc(db, `/users/${data.email.split("@")[0]}`), {});
       reset();
-      navigate("/dashboard");
+      navigate("/groups");
     } catch (error) {
       setError(error.message);
     }
