@@ -25,6 +25,6 @@ https://user-images.githubusercontent.com/88877609/206999991-72154a72-7b97-4758-
 
 
 ### Improvements to be made
-- Optimize the backend to reduce the number of requests made.
-- Revamp the delete transaction UI.
+- Optimize the backend to reduce the number of requests made
+- Revamp the delete transaction UI (perhaps use swipe to delete)
 
