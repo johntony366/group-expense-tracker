@@ -60,25 +60,6 @@ export const AddTransactionForm = () => {
         >
           <section>
             <Controller
-              render={({ field: { ref, ...field } }) => {
-                return (
-                  <TextField
-                    {...field}
-                    inputRef={ref}
-                    label={"Item"}
-                    placeholder={"Enter item..."}
-                    sx={{ width: "100%" }}
-                  />
-                );
-              }}
-              rules={{ required: true }}
-              name="itemName"
-              control={control}
-              defaultValue=""
-            />
-          </section>
-          <section>
-            <Controller
               render={({ field }) => (
                 <TextField
                   type="number"
@@ -93,6 +74,25 @@ export const AddTransactionForm = () => {
               )}
               rules={{ required: true }}
               name="amount"
+              control={control}
+              defaultValue=""
+            />
+          </section>
+          <section>
+            <Controller
+              render={({ field: { ref, ...field } }) => {
+                return (
+                  <TextField
+                    {...field}
+                    inputRef={ref}
+                    label={"Item"}
+                    placeholder={"Enter item..."}
+                    sx={{ width: "100%" }}
+                  />
+                );
+              }}
+              rules={{ required: true }}
+              name="itemName"
               control={control}
               defaultValue=""
             />
